@@ -1,0 +1,30 @@
+<md-toolbar>
+  <button md-icon-button #openCloseButton (click)="toggleOpened();$event.stopPropagation()">
+    <md-icon class="open-close"[class.closed]="!_opened"
+      fontSet="fontawesome" fontIcon="fa-angle-double-left"></md-icon>
+  </button>
+  <button md-icon-button (click)="togglePinned();$event.stopPropagation()">
+    <md-icon class="thumb-tack" [class.pinned]="!_pinned"
+      fontSet="fontawesome" fontIcon="fa-thumb-tack"></md-icon>
+  </button>
+</md-toolbar>
+<div role="list">
+  <div *ngFor="let sideBarItem of sideBarItemList">
+    <app-nav-sidebar-item [class.selected]="sideBarItem === selectedSideBarItem"
+                          [sideBarItem]="sideBarItem"
+                          (click)="itemClicked(sideBarItem);$event.stopPropogation;">
+    </app-nav-sidebar-item>
+    <div *ngIf="isExpanded(sideBarItem)">
+
+        <div *ngFor="let subSideBarItem of sideBarItem.subItems"
+              (click)="itemClicked(subSideBarItem);$event.stopPropagation();">
+
+            <app-nav-sidebar-item [class.selected]="subSideBarItem === selectedSideBarItem"
+                                    [sideBarItem]="subSideBarItem"
+                                    class="sub-category-indent">
+            </app-nav-sidebar-item>
+
+        </div>    
+  </div>
+</div>
+

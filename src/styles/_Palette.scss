@@ -1,0 +1,37 @@
+// Color swatches
+$md-palette-1: (
+  0: #fff,     // white
+  1: #f9f9f9,  // gray-15
+  2: #f3f3f3,  // gray-20
+  3: #e5e5e5,  // gray-25
+  4: #d8d8d9,  // gray-30
+  5: #c2c2c2,  // gray-35
+  6: #a5a5a5,  // gray-45
+  7: #414142,  // gray-80
+  8: #e9f4fd,  // blue-20
+  9: #e2ecf5,  // blue-25
+  10: #3a7da9, // blue-60
+  11: #005a99, // blue-75
+  12: #32424d, // blue-80
+  13: #004677, // blue-85
+  14: #202c34, // blue-90
+  15: #1bb51e, // green
+  16: #f19700, // orange
+  17: #b1181e  // red
+);
+
+/* vdl-color using default palette 'vdl-palette-1'
+  Examples of use:
+  vdl-color(15);
+
+  to specify a different color palette:
+  vdl-color(4, $some-other-palette);
+ */
+@function md-color($key, $palette:$md-palette-1) {
+  @if map-has-key($palette, $key) {
+    @return map-get($palette, $key);
+  }
+
+  @warn 'Unknown `#{$key}` in $palette.';
+  @return null;
+}

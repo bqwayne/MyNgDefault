@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+
+  app-root {
+    flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .app-sidenav {
+      display: flex;
+      flex-direction: row;
+      flex: 1 1 auto;
+    }
+  }
+
+  .demo-content2 {
+    flex: 1 1 auto;
+  }
+
+}
+
+.demo-content {
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+// stretch to screen size in fullscreen mode
+.demo-content {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+}

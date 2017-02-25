@@ -1,0 +1,129 @@
+@import './styles/Palette';
+@import './styles/variables';
+
+$font-sans-serif: 'Roboto', sans-serif;
+$font-sans-serif-light: 'Roboto Light', sans-serif;
+$md-a-color-default: md-color(13);
+$md-a-color-hover: md-color(11);
+$md-a-color-click: md-color(10);
+$md-a-color-disabled: md-color(6);
+$md-a-color-focus: $md-a-color-hover;
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+a {
+  line-height: normal;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: none;
+  color: $md-a-color-default;
+  vertical-align: baseline;
+  text-align: start;
+  text-decoration: none;
+
+  &:hover,
+  &.hover {
+    color: $md-a-color-hover;
+    background: none;
+  }
+
+  &:focus,
+  &.focus {
+    color: $md-a-color-focus;
+    background: none;
+  }
+
+  [disabled] {
+    color: $md-a-color-disabled;
+    background: none;
+  }
+
+  &:active,
+  &.active {
+    color: $md-a-color-click;
+    background: none;
+  }
+
+  &.disabled,
+  &:disabled,
+  &.disabled:hover,
+  &:disabled:hover {
+    color: $md-a-color-disabled;
+    background: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+small {
+  font-size: 0.75rem;
+  font-weight: normal;
+}
+
+.lead {
+  font-size: 1.313rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+
+  &.small {
+    font-size: 1.438rem;
+  }
+}
+
+h2 {
+  font-size: 1.875rem;
+
+  &.small {
+    font-size: 1.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+
+  &.small {
+    font-size: 1rem;
+  }
+}
+
+h4 {
+  font-size: 1.125rem;
+
+  &.small {
+    font-size: 0.875rem;
+  }
+}
+
+h5 {
+  font-size: 0.875rem;
+
+  &.small {
+    font-size: 0.688rem;
+  }
+}
+
+h6 {
+  font-size: 0.75rem;
+
+  &.small {
+    font-size: 0.563rem;
+  }
+}

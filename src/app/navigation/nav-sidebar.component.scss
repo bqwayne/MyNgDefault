@@ -1,0 +1,276 @@
+@import '../../styles/Palette.scss';
+@import '../../styles/variables.scss';
+
+$app-sidebar-list-color: #d8d8d9;
+$app-sidebar-list-background-color: #202c34;
+$md-font-family-light: Roboto Light, sans-serif !default;
+
+@mixin focus-style() {
+  // todo(dhm): if not outline, what style here?
+  background-color: #32424d; // use hover text color for now
+}
+
+.app-sidebar-list {
+    margin-top: -1px;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+
+    background-color: $app-sidebar-list-background-color;
+
+    transition-property: width;
+    transition-duration: 300ms;    
+
+    &.app-sidebar-list-collapse{
+
+        width: 60px;
+        max-width: 60px;
+        min-width: 60px;
+        overflow: hidden;
+
+        & .mat-toolbar button[md-icon-button]:last-child {
+        display: none;
+        }
+
+        .app-sidebar-list-item.sub-category-indent .category-spacer,
+        .app-sidebar-list .app-sidebar-list-item.sub-category-indent .category-spacer {
+        transition-property: width;
+        transition-duration: 300ms;
+        width: 15px; // make room for expander
+        }
+
+        .app-sidebar-list-item {
+
+            max-height: 40px;
+
+            .category-icon {
+                padding-right: 0;
+            }
+            .category-name {
+                transition-property: all;
+                transition-duration: 300ms;
+                //opacity: 0;
+                //visibility: collapse;
+                visibility: hidden;
+                overflow: hidden;
+                white-space: nowrap;
+
+                width: 0;
+                padding: 0;
+                flex: 0 0 auto;
+            }
+            .category-expander {
+                max-width: 20px;
+                min-width: 20px;
+            }
+        }
+    }
+
+  //.vdl-toolbar .vdl-toolbar-layout .vdl-toolbar-row button[vdl-icon-button]
+    md-toolbar {
+        height: 39px;
+        min-height: 40px;
+
+        border-bottom: 0.5px solid vdl-color(7);
+        padding: 0;
+        margin-bottom: 10px;
+        color: $app-sidebar-list-color;
+        background-color: $app-sidebar-list-background-color;
+
+        .mat-toolbar-layout .mat-toolbar-row {
+        justify-content: space-between;
+        height: inherit;
+
+            button[md-icon-button] {
+                height: 39px;
+                width: 40px;
+
+                color: $app-sidebar-list-color;
+                border: none;
+
+                span.mat-button-wrapper {
+
+                    .mat-icon {
+
+                        cursor: inherit;
+                        color: $app-sidebar-list-color;
+
+                        height: 20px;
+                        width: 20px;
+                        line-height: 20px;
+
+                        &.open-close::before {
+                        font-size: 1.375rem;
+                        }
+
+                        &.thumb-tack::before {
+                        font-size: 0.938rem;
+                        }
+
+                        transition-duration: 120ms;
+                        transition-property: transform;
+
+                        &.closed {
+                        transform: rotate(-180deg);
+                        }
+
+                        &.pinned {
+                        transform: rotate(30deg);
+                        }
+                    }
+
+                }
+
+                &:hover {
+                    //background-color: cyan;
+                }
+
+                &:focus { // toolbar focus
+                //@include focus-outline();
+                }
+
+                &:disabled,
+                &.disabled {
+                opacity: 0.5;
+                background-color: transparent;
+                }
+
+                &:first-child {
+                width: 60px;
+                }
+            } //button[md-icon-button]
+        } //.mat-toolbar-layout .mat-toolbar-row
+    } //md-toolbar
+
+  .app-sidebar-list-item {
+
+    transition-property: width;
+    transition-duration: 400ms;
+    transition: color 300ms;
+
+    &.sub-category-indent .category-spacer {
+      width: 45px;
+    }
+
+    &.selected {
+      background-color: md-color(12);
+      .category-spacer {
+        border-left-color: md-color(17);
+      }
+    }
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: center;
+
+    min-height: 40px;
+    max-height: 60px;
+
+    font-family: $md-font-family-light;
+    transparency: 70%;
+    color: $app-sidebar-list-color;
+    background-color: $app-sidebar-list-background-color;
+
+    .category-spacer {
+      flex: 0 0 auto;
+      align-self: stretch;
+      width: 15px; // attach width when subcategory
+      border-left: 5px solid transparent;
+    }
+
+    .category-icon {
+      display: flex;
+      flex: 0 0 auto;
+      align-self: stretch;
+      //justify-content: center;
+      align-items: center;
+      width: 20px;
+      padding-right: 10px;
+
+      .mat-icon {
+        height: 20px;
+        width: 20px;
+        font-size: 20px;
+        line-height: 20px;
+
+        &::before {
+          width: 20px;
+          height: 20px;
+        }
+
+      }
+
+    }
+
+    .category-name {
+      flex: 1 1 auto;
+      display: flex;
+      align-self: stretch;
+      margin: 11px 0;
+      overflow: hidden;
+      align-content: center;
+      font-size: 1rem;
+      user-select: none;
+      //line-height: 1.25rem;
+      // more magic needed for ...
+      // otoh, if we're overflowing here, some rethinking of the ux is needed
+      // a starting point here: https://css-tricks.com/flexbox-truncated-text/
+      text-overflow: ellipsis;
+    }
+
+    div.category-expander {
+      min-width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      md-icon {
+        height: 16px;
+        width: 10px;
+        line-height: 16px;
+        transition-duration: 250ms;
+        transition-property: transform;
+
+        &::before {
+          font-size: 1rem;
+        }
+
+        &.expanded {
+          transform: rotate(-180deg);
+        }
+      }
+
+    }
+
+    button:focus md-icon {
+      color: $app-sidebar-list-color; // maintain color on focus
+    }
+
+    outline: transparent;
+
+    &.app-sidebar-list-item-focus {
+      @include focus-style();
+    }
+
+    &:hover {
+      color: white;
+    }
+
+  }
+
+  button, [vdl-icon-button] { // copied from buttons.scss line ~267
+
+    &:focus,
+    &.focus {
+      @include focus-style();
+    }
+  }
+} //.app-sidebar-list

@@ -1,0 +1,30 @@
+<!--<div class="vdl-sidenav-list-item">-->
+
+    <div class="category-spacer"></div>
+
+    <div class="category-icon">
+        <div>
+            <md-icon md-list-icon class="category-icon"
+                      fontSet="fontawesome" [fontIcon]=sideBarItem.icon>
+            </md-icon>
+        </div>
+    </div>
+
+    <div class="category-name">
+        {{sideBarItem.displayName}}
+    </div>
+
+    <div class="category-expander">
+
+        <div>
+
+        <md-icon class="sidenav-icon"
+                  [class.expanded]="isExpanded(sideBarItem)"
+                  *ngIf="isExpandable(sideBarItem)"
+                  fontSet="fontawesome" fontIcon="fa-angle-down">
+        </md-icon>
+        </div>
+
+    </div>
+
+<!--</div>-->
