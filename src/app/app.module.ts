@@ -10,6 +10,7 @@ import 'hammerjs';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
 
@@ -17,6 +18,7 @@ import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
     HomeComponent,
     NavTopbarComponent,
     NavTopbarActionComponent,

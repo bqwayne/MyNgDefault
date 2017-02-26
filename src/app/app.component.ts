@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     {actionName: 'alert', routeType: 'alert', target: 'Alert icon clicked!', icon: 'fa-bell'},
     {actionName: 'help', routeType: 'alert', target: 'Help icon clicked!', icon: 'fa-question'},
     {actionName: 'menu', routeType: 'alert', target: 'Menu icon clicked!', icon: 'fa-bars'},
-    {actionName: 'user', routeType: 'alert', target: 'Admin icon clicked!', icon: 'fa-user'}
+    {actionName: 'admin', routeType: 'route', target: 'admin', icon: 'fa-user'}
   ]
 
   constructor(mdIconRegistry: MdIconRegistry,
@@ -64,6 +64,9 @@ export class AppComponent implements OnInit {
     //this._router.navigate([topBarAction.route])
     if (topBarAction.routeType === 'alert') {
       alert(topBarAction.target);
+    }
+    if (topBarAction.routeType === 'route') {
+      this._router.navigate([topBarAction.target]);
     }
   }
 

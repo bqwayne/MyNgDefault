@@ -1,0 +1,4 @@
+{ 
+    "routeTypes": ["route", "alert", "dialog", "menu"],
+    "user": "admin"
+}

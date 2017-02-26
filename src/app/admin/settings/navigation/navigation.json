@@ -1,0 +1,24 @@
+{
+    "topbar-nav": [
+    {"actionName": "alert", "routeType": "alert", "target": "Alert icon clicked!", "icon": "fa-bell"},
+    {"actionName": "help", "routeType": "alert", "target": "Help icon clicked!", "icon": "fa-question"},
+    {"actionName": "menu", "routeType": "alert", "target": "Menu icon clicked!", "icon": "fa-bars"},
+    {"actionName": "admin", "routeType": "route", "target": "admin", "icon": "fa-user"}
+  ],
+    "sidebar-nav": [
+    {"displayName": "Home", "route": "home", "icon": "fa-home"},
+    {
+      "displayName": "Partners", "route": "partner", "icon": "fa-handshake-o",
+      "subItems": [
+        {"displayName": "Partners Home", "route": "partner", "icon": "fa-handshake-o"},
+        {"displayName": "NAM List", "route": "partner-list", "icon": "fa-handshake-o"},
+        {"displayName": "Types", "route": "partner-types", "icon": "fa-handshake-o"}
+      ]
+    },
+    {
+      "displayName": "About", "route": "about", "icon": "fa-info-circle",
+      "subItems": [
+        {"displayName": "Langing Page", "route": "about", "icon": "fa-info-circle"}
+      ]
+    }]
+}

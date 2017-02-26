@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 //import { AboutComponent } from './about';
 //import { BillComponent } from './bill';
@@ -12,4 +13,5 @@ export const ROUTES: Routes = [
   { path: 'partner',  component: HomeComponent },
   { path: 'partner-types',  component: HomeComponent },
   { path: 'partner-list',  component: HomeComponent },
+  { path: 'admin', component: AdminComponent}
 ];
