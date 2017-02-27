@@ -3,6 +3,7 @@
 <md-card>
     <md-tab-group>
         <md-tab label="Users">
+            <br>
             <md-tab-group>
                 <md-tab label="Users">
                     This is the tab for Users...
@@ -16,16 +17,28 @@
             </md-tab-group>
         </md-tab>
         <md-tab label="Settings">
+            <br>
             <md-tab-group>
-                <md-tab label="Navigation">
-                    Top Navigation:<br/>
-                            <app-topnav-settings [topBarNavigationItems]="topBarItems"></app-topnav-settings> 
-                    SideBar Navigation: <br/>
-                            <app-sidenav-settings [sideBarNavigationItems]="sideBarItems"></app-sidenav-settings>
+                <md-tab label="Topbar Navigation">
+                    <md-card style="width: 95%;">
+                        <app-topnav-settings [topBarNavigationItems]="topBarItems"></app-topnav-settings> 
+                        <md-card-actions>
+                            <button md-button>Add</button>
+                        </md-card-actions>
+                    </md-card>
                 </md-tab>
+                <md-tab label="Sidebar Navigation"> 
+                    <md-card style="width: 95%">
+                        <app-sidenav-settings [sideBarNavigationItems]="sideBarItems"></app-sidenav-settings>
+                        <md-card-actions>
+                            <button md-button>Add</button>
+                        </md-card-actions>
+                    </md-card>
+                </md-tab>                
             </md-tab-group>
         </md-tab>
         <md-tab label="Alerts">
+            <br>
             <md-tab-group>
                 <md-tab label="Alerts">
 

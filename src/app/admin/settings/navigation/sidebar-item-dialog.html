@@ -1,7 +1,13 @@
+<h1>SubItems for {{ parentRoute }}</h1>
 <table>
-    <tr *ngFor="let sideBarNavItem on sideBarItem">
-        <td>{{ sideBarNavItem.displayName }}</td>
-        <td>{{ sideBarNavItem.icon }}</td>
-        <td>{{ sideBarNavItem.route }}</td>    
+    <thead>
+        <th>Dissplay Name</th>
+        <th>Icon</th>
+        <th>Route</th>
+    </thead>
+    <tr *ngFor="let sideBarItem of sideBarItems">
+        <td>{{ sideBarItem.displayName }}</td>
+        <td><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="{{ sideBarItem.icon }}"></md-icon> - {{ sideBarItem.icon }}</td>
+        <td>{{ sideBarItem.route }}</td>
     </tr>
 </table>

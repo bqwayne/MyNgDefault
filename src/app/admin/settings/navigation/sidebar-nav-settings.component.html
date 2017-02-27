@@ -6,14 +6,20 @@
                 <th>Icon</th>
                 <th>Route</th>
                 <th>SubItems</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let sideBarNavItem of sideBarNavigationItems">
                 <td>{{ sideBarNavItem.displayName }}</td>
-                <td>{{ sideBarNavItem.icon }}</td>
+                <td><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="{{ sideBarNavItem.icon }}"></md-icon> - {{ sideBarNavItem.icon }}</td>
                 <td>{{ sideBarNavItem.route }}</td>
-                <td *ngIf="(sideBarNavItem.subItems) && (sideBarNavItem.subItems.length>=0)"><button md-button (click)="openDialog(sideBarNavItem.subItems)">{{ sideBarNavItem.subItems.length }}</button></td>
+                <td *ngIf="(sideBarNavItem.subItems) && (sideBarNavItem.subItems.length>=0)"><button md-button (click)="openDialog(sideBarNavItem.subItems, sideBarNavItem.displayName)">{{ sideBarNavItem.subItems.length }}</button></td>
+                <td *ngIf="!(sideBarNavItem.subItems) || (sideBarNavItem.subItems.length<0)"><button md-button><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-plus"></md-icon></button></td>
+                <td>
+                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon>
+                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-eraser"></md-icon>
+                </td>
             </tr>
         </tbody>
     </table>

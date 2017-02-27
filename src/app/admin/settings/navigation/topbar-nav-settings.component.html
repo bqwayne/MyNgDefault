@@ -6,14 +6,19 @@
                 <th>Icon</th>
                 <th>Route Type</th>
                 <th>Target</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let topBarNavItem of topBarNavigationItems">
                 <td>{{ topBarNavItem.actionName }}</td>
-                <td>{{ topBarNavItem.icon }}</td>
+                <td><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="{{ topBarNavItem.icon }}"></md-icon> - {{ topBarNavItem.icon }}</td>
                 <td>{{ topBarNavItem.routeType }}</td>
                 <td>{{ topBarNavItem.target }}</td>
+                <td>
+                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon>
+                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-eraser"></md-icon>
+                </td>
             </tr>
         </tbody>
     </table>

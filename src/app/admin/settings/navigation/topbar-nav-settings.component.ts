@@ -16,7 +16,9 @@ import { NavigationDataService, ITopbarActionsComponent } from './'
 export class TopBarNavigationSettingsComponent implements OnInit {
     @Input() topBarNavigationItems: ITopbarActionsComponent[];
 
-    constructor(){}
+    constructor(private mdIconRegistry: MdIconRegistry) {
+    mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+   }
 
     ngOnInit() {
         console.log(this.topBarNavigationItems);

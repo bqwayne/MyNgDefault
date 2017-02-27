@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { MdIconRegistry } from '@angular/material';
+import { MdIconRegistry, MdDialog, MdDialogRef } from '@angular/material';
 import { NavigationDataService, ISideBarItemComponent } from './'
 
 
@@ -16,9 +16,33 @@ import { NavigationDataService, ISideBarItemComponent } from './'
 export class SideBarNavigationSettingsComponent implements OnInit {
     @Input() sideBarNavigationItems: ISideBarItemComponent[];
 
-    constructor(){}
+    constructor(private dialog: MdDialog,
+                private mdIconRegistry: MdIconRegistry) {
+        mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+   }
 
     ngOnInit() {
         console.log(this.sideBarNavigationItems);
     }
+
+    openDialog(sideBarItems: ISideBarItemComponent[], displayName: string) {
+        let dialogRef = this.dialog.open(SideBarItemDialog);
+        dialogRef.componentInstance.sideBarItems = sideBarItems;
+        dialogRef.componentInstance.parentRoute = displayName;
+    }    
+}
+
+@Component({
+    selector: 'sidebar-item-dialog',
+    templateUrl: './sidebar-item-dialog.html'
+})
+
+export class SideBarItemDialog {
+    sideBarItems: ISideBarItemComponent[];
+    parentRoute: string;
+    
+    constructor(public dialogRef: MdDialogRef<SideBarItemDialog>,
+                private mdIconRegistry: MdIconRegistry){
+                    mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+                }
 }
