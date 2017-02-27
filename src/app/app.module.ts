@@ -10,10 +10,10 @@ import 'hammerjs';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { AdminComponent } from './admin';
+import { AdminComponent, SideBarItemDialog } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
-import { ITopbarActionsComponent, ISideBarItemComponent, NavigationDataService, TopBarNavigationSettingsComponent } from './admin/settings/navigation';
+import { ITopbarActionsComponent, ISideBarItemComponent, NavigationDataService, TopBarNavigationSettingsComponent, SideBarNavigationSettingsComponent } from './admin/settings/navigation';
 
 
 @NgModule({
@@ -25,7 +25,9 @@ import { ITopbarActionsComponent, ISideBarItemComponent, NavigationDataService, 
     NavTopbarActionComponent,
     NavSidebarListComponent,
     NavSidebarListItemComponent,
-    TopBarNavigationSettingsComponent
+    TopBarNavigationSettingsComponent,
+    SideBarNavigationSettingsComponent,
+    SideBarItemDialog
   ],
   imports: [
     BrowserModule,

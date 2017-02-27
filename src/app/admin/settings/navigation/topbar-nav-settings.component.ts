@@ -2,24 +2,6 @@ import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } 
 import { MdIconRegistry } from '@angular/material';
 import { NavigationDataService, ITopbarActionsComponent } from './'
 
-@Component({
-    selector: 'app-topnav-settings-item',
-    templateUrl: 'topbar-nav-settings-item.component.html',
-    styleUrls: ['topbar-nav-settings.component.scss']
-})
-
-export class TopBarNavigationSettingsItemComponent implements OnInit {
-    @Input('topBarNavItem') topBarNavItem: ITopbarActionsComponent;
-
-    constructor(){}
-
-    ngOnInit() {
-        let logMessage = "This topbar navigation item has an Action Name of " + this.topBarNavItem.actionName + " and a Route Type of " + this.topBarNavItem.routeType;
-        console.log(logMessage)
-
-    }
-}
-
 
 @Component({
     selector: 'app-topnav-settings',

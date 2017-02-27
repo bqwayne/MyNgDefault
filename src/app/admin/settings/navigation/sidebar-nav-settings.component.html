@@ -1,0 +1,20 @@
+<md-card>
+    <table>  
+        <thead>
+            <tr>
+                <th>Display Name</th>
+                <th>Icon</th>
+                <th>Route</th>
+                <th>SubItems</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sideBarNavItem of sideBarNavigationItems">
+                <td>{{ sideBarNavItem.displayName }}</td>
+                <td>{{ sideBarNavItem.icon }}</td>
+                <td>{{ sideBarNavItem.route }}</td>
+                <td *ngIf="(sideBarNavItem.subItems) && (sideBarNavItem.subItems.length>=0)"><button md-button (click)="openDialog(sideBarNavItem.subItems)">{{ sideBarNavItem.subItems.length }}</button></td>
+            </tr>
+        </tbody>
+    </table>
+</md-card>
