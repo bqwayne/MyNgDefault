@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
+import { ITopbarActionsComponent, ISideBarItemComponent, NavigationDataService, TopBarNavigationSettingsComponent } from './admin/settings/navigation';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, 
     NavTopbarComponent,
     NavTopbarActionComponent,
     NavSidebarListComponent,
-    NavSidebarListItemComponent
+    NavSidebarListItemComponent,
+    TopBarNavigationSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, 
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules}),
     MaterialModule
   ],
-  providers: [],
+  providers: [NavigationDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

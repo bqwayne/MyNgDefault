@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ElementRef, ViewChild, NgZone, Renderer } from '@angular/core';
-import { ISideBarItemComponent } from './navigation/nav-sidebar.component';
-import { ITopbarActionsComponent } from './navigation/nav-topbar.component';
+import { ITopbarActionsComponent, NavigationDataService, ISideBarItemComponent } from './admin/settings/navigation';
 import { MdIconRegistry } from '@angular/material';
 import { Router } from '@angular/router';
 
@@ -10,9 +9,12 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [NavigationDataService]
 })
 export class AppComponent implements OnInit {
+  topBarActionsFromService: ITopbarActionsComponent[];
+  sideBarItemsFromService: ISideBarItemComponent[];
 
 
   public sideBarItems: ISideBarItemComponent[] = [
@@ -35,6 +37,7 @@ export class AppComponent implements OnInit {
 
   public selectedSideBarItem: ISideBarItemComponent = this.sideBarItems[0];
 
+
   public topBarActions: ITopbarActionsComponent[] = [
     {actionName: 'alert', routeType: 'alert', target: 'Alert icon clicked!', icon: 'fa-bell'},
     {actionName: 'help', routeType: 'alert', target: 'Help icon clicked!', icon: 'fa-question'},
@@ -42,14 +45,22 @@ export class AppComponent implements OnInit {
     {actionName: 'admin', routeType: 'route', target: 'admin', icon: 'fa-user'}
   ]
 
+
   constructor(mdIconRegistry: MdIconRegistry,
               private _renderer: Renderer,
               private _router: Router,
-              private _ngZone: NgZone){
+              private _ngZone: NgZone,
+              private _navigationdataservice: NavigationDataService){
   }
 
   public ngOnInit() {
     console.log('App has initialized!!');
+    this._navigationdataservice.getTopBarNav().subscribe(response => {
+      this.topBarActionsFromService = response;
+      console.log(this.topBarActionsFromService);  
+    });
+    this._navigationdataservice.getSideBarNav().subscribe(response => this.sideBarItemsFromService = response);
+      
   }
 
   public sideBarItemSelected(sideBarItem: ISideBarItemComponent){

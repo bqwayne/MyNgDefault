@@ -1,14 +1,7 @@
 import { NgModule, NgZone, ModuleWithProviders, Component, ViewEncapsulation, ViewChild, ElementRef, Renderer, EventEmitter, ChangeDetectionStrategy, Input, Output, OnInit } from '@angular/core';
 import { MdButtonModule, MdButton, MdIconRegistry, MdIconModule } from '@angular/material';
+import { ITopbarActionsComponent, NavigationDataService } from '../admin/settings/navigation';
 
-export interface ITopbarActionsComponent {
-  id?: number;
-  actionName: string;
-  icon: string;
-  routeType: string;
-  target: string;
-  data?: string;
-}
 
 @Component({
   selector: 'app-nav-topbar-action',

@@ -1,0 +1,20 @@
+<md-card>
+    <table>  
+        <thead>
+            <tr>
+                <th>Action Name</th>
+                <th>Icon</th>
+                <th>Route Type</th>
+                <th>Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let topBarNavItem of topBarNavigationItems">
+                <td>{{ topBarNavItem.actionName }}</td>
+                <td>{{ topBarNavItem.icon }}</td>
+                <td>{{ topBarNavItem.routeType }}</td>
+                <td>{{ topBarNavItem.target }}</td>
+            </tr>
+        </tbody>
+    </table>
+</md-card>
