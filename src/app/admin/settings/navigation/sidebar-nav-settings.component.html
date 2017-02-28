@@ -10,17 +10,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let sideBarNavItem of sideBarNavigationItems">
+            <tr *ngFor="let sideBarNavItem of sideBarNavigationItems; let i = index">
                 <td>{{ sideBarNavItem.displayName }}</td>
                 <td><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="{{ sideBarNavItem.icon }}"></md-icon> - {{ sideBarNavItem.icon }}</td>
                 <td>{{ sideBarNavItem.route }}</td>
                 <td *ngIf="(sideBarNavItem.subItems) && (sideBarNavItem.subItems.length>=0)"><button md-button (click)="openDialog(sideBarNavItem.subItems, sideBarNavItem.displayName)">{{ sideBarNavItem.subItems.length }}</button></td>
                 <td *ngIf="!(sideBarNavItem.subItems) || (sideBarNavItem.subItems.length<0)"><button md-button><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-plus"></md-icon></button></td>
                 <td>
-                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon>
-                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-eraser"></md-icon>
+                    <button md-button id="{{index}}"><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                    <button md-button><md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <md-card-actions>
+        <button md-button>Add</button>
+    </md-card-actions>
 </md-card>

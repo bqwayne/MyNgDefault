@@ -1,0 +1,10 @@
+[
+  { "path": "",      "component": "HomeComponent" },
+  { "path": "home",  "component": "HomeComponent" },
+  { "path": "about", "component": "HomeComponent" },
+  { "path": "bill",  "component": "HomeComponent" },
+  { "path": "partner",  "component": "HomeComponent" },
+  { "path": "partner-types",  "component": "HomeComponent" },
+  { "path": "partner-list",  "component": "HomeComponent" },
+  { "path": "admin", "component": "AdminComponent"}
+]

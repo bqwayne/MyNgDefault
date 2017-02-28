@@ -45,7 +45,32 @@ export class NavigationDataService implements OnInit {
         });
     }
 
+    public setTopBarNav(topBarNavItem: ITopbarActionsComponent){
+        // Update (post) the current record
+
+    }
+
+    public addTopBarNav(topBarNavItem: ITopbarActionsComponent){
+        // Push new record
+    }
+
+    public deleteTopBarNav(topBarNavItem: ITopbarActionsComponent) {
+        // Splice existing record
+    }
+
     public getSideBarNav(): Observable<ISideBarItemComponent[]> {
         return this.http.get(this.sideBarDataLoc).map(response => response.json());
     }
+ 
+    public setSideBarNav(sideBarNavItem: ISideBarItemComponent) {
+        // Update the current record
+    }
+
+    public addSideBarNav(sideBarNavItem: ISideBarItemComponent) {
+        // Push new record
+    }
+
+    public deleteSideBarNav(sideBarNavItem: ISideBarItemComponent) {
+        // Splice existing record
+    }   
 }

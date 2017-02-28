@@ -15,6 +15,7 @@ import { NavigationDataService, ISideBarItemComponent } from './'
 
 export class SideBarNavigationSettingsComponent implements OnInit {
     @Input() sideBarNavigationItems: ISideBarItemComponent[];
+    dialogRef: MdDialogRef<SideBarItemDialog>;
 
     constructor(private dialog: MdDialog,
                 private mdIconRegistry: MdIconRegistry) {
@@ -26,10 +27,10 @@ export class SideBarNavigationSettingsComponent implements OnInit {
     }
 
     openDialog(sideBarItems: ISideBarItemComponent[], displayName: string) {
-        let dialogRef = this.dialog.open(SideBarItemDialog);
-        dialogRef.componentInstance.sideBarItems = sideBarItems;
-        dialogRef.componentInstance.parentRoute = displayName;
-    }    
+        this.dialogRef = this.dialog.open(SideBarItemDialog);
+        this.dialogRef.componentInstance.sideBarItems = sideBarItems;
+        this.dialogRef.componentInstance.parentRoute = displayName;
+    }  
 }
 
 @Component({
@@ -45,4 +46,7 @@ export class SideBarItemDialog {
                 private mdIconRegistry: MdIconRegistry){
                     mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
                 }
+    closeDialog(){
+        this.dialogRef.close();
+    }
 }

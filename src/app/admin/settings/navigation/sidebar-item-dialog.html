@@ -1,4 +1,4 @@
-<h1>SubItems for {{ parentRoute }}</h1>
+<h1 md-title>SubItems for {{ parentRoute }}</h1>
 <table>
     <thead>
         <th>Dissplay Name</th>
@@ -11,3 +11,6 @@
         <td>{{ sideBarItem.route }}</td>
     </tr>
 </table>
+<md-dialog-actions>
+    <button md-button (click)="closeDialog();">Close</button>
+</md-dialog-actions>

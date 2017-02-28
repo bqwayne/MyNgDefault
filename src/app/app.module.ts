@@ -19,6 +19,8 @@ import {  ITopbarActionsComponent,
           TopBarNavigationSettingsComponent, 
           SideBarNavigationSettingsComponent, 
           SideBarItemDialog } from './admin/settings/navigation';
+import { AppRoutesComponent } from './admin/settings/routes';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import {  ITopbarActionsComponent,
     NavSidebarListItemComponent,
     TopBarNavigationSettingsComponent,
     SideBarNavigationSettingsComponent,
-    SideBarItemDialog
+    SideBarItemDialog,
+    AppRoutesComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

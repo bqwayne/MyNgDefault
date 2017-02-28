@@ -20,21 +20,14 @@
             <br>
             <md-tab-group>
                 <md-tab label="Topbar Navigation">
-                    <md-card style="width: 95%;">
-                        <app-topnav-settings [topBarNavigationItems]="topBarItems"></app-topnav-settings> 
-                        <md-card-actions>
-                            <button md-button>Add</button>
-                        </md-card-actions>
-                    </md-card>
+                    <app-topnav-settings [topBarNavigationItems]="topBarItems"></app-topnav-settings> 
                 </md-tab>
                 <md-tab label="Sidebar Navigation"> 
-                    <md-card style="width: 95%">
-                        <app-sidenav-settings [sideBarNavigationItems]="sideBarItems"></app-sidenav-settings>
-                        <md-card-actions>
-                            <button md-button>Add</button>
-                        </md-card-actions>
-                    </md-card>
-                </md-tab>                
+                    <app-sidenav-settings [sideBarNavigationItems]="sideBarItems"></app-sidenav-settings>
+                </md-tab>
+                <md-tab label="Routes">
+                    <app-routes [ROUTES]="ROUTES"></app-routes>
+                </md-tab>
             </md-tab-group>
         </md-tab>
         <md-tab label="Alerts">

@@ -1,0 +1,22 @@
+<md-card>
+    <h1>Routes!!!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Path:</th>
+                <th>Component:</th>
+                <th>Data:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let route of ROUTES">
+                <td>{{ route.path }}</td>
+                <td>{{ route.component.name }}</td>
+                <td>{{ route.data }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <md-card-actions>
+        <button md-button (click)="alert();">Add</button>
+    </md-card-actions>
+</md-card>
