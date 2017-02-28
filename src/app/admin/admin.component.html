@@ -20,13 +20,16 @@
             <br>
             <md-tab-group>
                 <md-tab label="Topbar Navigation">
-                    <app-topnav-settings [topBarNavigationItems]="topBarItems"></app-topnav-settings> 
+                    <app-topnav-settings [topBarNavigationItems]="topBarItems" [routeTypes]="routeTypes"></app-topnav-settings> 
                 </md-tab>
                 <md-tab label="Sidebar Navigation"> 
                     <app-sidenav-settings [sideBarNavigationItems]="sideBarItems"></app-sidenav-settings>
                 </md-tab>
                 <md-tab label="Routes">
                     <app-routes [ROUTES]="ROUTES"></app-routes>
+                </md-tab>
+                <md-tab label="Route Types">
+                    <route-types-display [routeTypes]="routeTypes"></route-types-display>
                 </md-tab>
             </md-tab-group>
         </md-tab>

@@ -29,11 +29,8 @@ export class DialogComponent implements OnInit {
   export class DialogDisplayComponent implements OnInit {
     title: MdDialogTitle;
     content: MdDialogContent;
-    container: MdDialogContainer;
-
 
   constructor(public dialogRef: MdDialogRef<DialogDisplayComponent>){}
-
 
   ngOnInit() {
 
@@ -41,5 +38,8 @@ export class DialogComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+  customAction(action: string) {
+    window.alert("You want me to do " + action);
   }
 }

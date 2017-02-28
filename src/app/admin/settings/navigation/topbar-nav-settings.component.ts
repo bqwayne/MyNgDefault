@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { MdIconRegistry } from '@angular/material';
+import { MdIconRegistry, MdDialog, MdDialogRef } from '@angular/material';
 import { NavigationDataService, ITopbarActionsComponent } from './'
 
 
@@ -14,13 +14,43 @@ import { NavigationDataService, ITopbarActionsComponent } from './'
 })
 
 export class TopBarNavigationSettingsComponent implements OnInit {
-    @Input() topBarNavigationItems: ITopbarActionsComponent[];
+    @Input('topBarNavigationItems') topBarNavigationItems: ITopbarActionsComponent[];
+    @Input('routeTypes') routeTypes;
 
-    constructor(private mdIconRegistry: MdIconRegistry) {
+    constructor(private mdIconRegistry: MdIconRegistry,
+                private dialog: MdDialog,) {
     mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
    }
 
     ngOnInit() {
-        console.log(this.topBarNavigationItems);
     }
+    openDialog(routeTypes) {
+        let dialogRef = this.dialog.open(RouteTypesComponent);
+        dialogRef.componentInstance.routeTypes = routeTypes;
+    }
+}
+
+@Component({ 
+    selector: 'route-types',
+    templateUrl: './topbar-form-dialog.html',
+    styleUrls: ['topbar-nav-settings.component.scss']
+})
+export class RouteTypesComponent implements OnInit {
+    @Input() routeTypes;
+    constructor(){}
+
+    ngOnInit() {
+    }
+}
+
+@Component({
+    selector: 'route-types-display',
+    templateUrl: './topbar-route-types-display.html'
+})
+export class RouteTypesDisplayComponent implements OnInit {
+    @Input() routeTypes;
+
+    constructor(){}
+
+    ngOnInit() {}
 }

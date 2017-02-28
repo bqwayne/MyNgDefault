@@ -23,7 +23,7 @@ export class SideBarNavigationSettingsComponent implements OnInit {
    }
 
     ngOnInit() {
-        console.log(this.sideBarNavigationItems);
+   
     }
 
     openDialog(sideBarItems: ISideBarItemComponent[], displayName: string) {

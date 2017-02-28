@@ -26,10 +26,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit() {
     console.log('App has initialized!!');
-    this._navigationdataservice.getTopBarNav().subscribe(response => {
-      this.topBarActions = response;
-      console.log(this.topBarActions);  
-    });
+    this._navigationdataservice.getTopBarNav().subscribe(response => this.topBarActions = response);
     this._navigationdataservice.getSideBarNav().subscribe(response => this.sideBarItems = response);
       
   }

@@ -18,9 +18,12 @@ import {  ITopbarActionsComponent,
           NavigationDataService, 
           TopBarNavigationSettingsComponent, 
           SideBarNavigationSettingsComponent, 
-          SideBarItemDialog } from './admin/settings/navigation';
+          SideBarItemDialog,
+          RouteTypesComponent,
+          RouteTypesDisplayComponent } from './admin/settings/navigation';
+import { ConfigDefaultsService } from './admin/config';
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent } from './shared/dialog/dialog.component';
+import { DialogComponent, DialogDisplayComponent } from './shared';
 
 
 @NgModule({
@@ -35,8 +38,11 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     TopBarNavigationSettingsComponent,
     SideBarNavigationSettingsComponent,
     SideBarItemDialog,
+    RouteTypesComponent,
+    RouteTypesDisplayComponent,
     AppRoutesComponent,
-    DialogComponent
+    DialogComponent,
+    DialogDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +52,11 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     MaterialModule
   ],
   entryComponents: [
-    SideBarItemDialog
+    SideBarItemDialog,
+    DialogDisplayComponent,
+    RouteTypesComponent
   ],
-  providers: [NavigationDataService],
+  providers: [NavigationDataService, ConfigDefaultsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
