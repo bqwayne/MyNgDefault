@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, PreloadAllModules } from '@angular/router';
@@ -20,10 +20,12 @@ import {  ITopbarActionsComponent,
           SideBarNavigationSettingsComponent, 
           SideBarItemDialog,
           RouteTypesComponent,
-          RouteTypesDisplayComponent } from './admin/settings/navigation';
+          RouteTypesDisplayComponent,
+          IMenus,
+          MenuItemService } from './admin/settings/navigation';
 import { ConfigDefaultsService } from './admin/config';
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent, DialogDisplayComponent, ActionTypeDirective } from './shared';
+import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent } from './shared';
 
 
 @NgModule({
@@ -43,11 +45,13 @@ import { DialogComponent, DialogDisplayComponent, ActionTypeDirective } from './
     AppRoutesComponent,
     DialogComponent,
     DialogDisplayComponent,
+    AppMenuComponent,
     ActionTypeDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules}),
     MaterialModule
@@ -57,7 +61,7 @@ import { DialogComponent, DialogDisplayComponent, ActionTypeDirective } from './
     DialogDisplayComponent,
     RouteTypesComponent
   ],
-  providers: [NavigationDataService, ConfigDefaultsService],
+  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

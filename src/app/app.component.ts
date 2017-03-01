@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, OnInit, ElementRef, ViewChild, NgZone, Re
 import { ITopbarActionsComponent, NavigationDataService, ISideBarItemComponent } from './admin/settings/navigation';
 import { MdIconRegistry } from '@angular/material';
 import { Router } from '@angular/router';
+import { AppMenuComponent } from './shared';
 
 
 

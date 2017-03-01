@@ -1,0 +1,5 @@
+[
+    {"menuName": "alert", "menuType": "list", "menuListSource": "AlertListComponent"},
+    {"menuName": "help", "menuType": "drop-down",
+    "menuListItems": [{"menuItemName": "About", "route": "AboutComponent"}]}
+]

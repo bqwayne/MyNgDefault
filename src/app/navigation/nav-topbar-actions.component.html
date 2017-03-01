@@ -1,3 +1,8 @@
+<div *ngIf="topBarAction.routeType != 'menu'">
 <button md-icon-button [action-type]="topBarAction">
     <md-icon fontSet="fontawesome" [fontIcon]=topBarAction.icon></md-icon>
 </button>
+</div>
+<div *ngIf="topBarAction.routeType === 'menu'">
+    <app-menu [menu-item]=topBarAction></app-menu>
+</div>

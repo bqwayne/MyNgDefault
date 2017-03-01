@@ -1,6 +1,7 @@
 import { NgModule, NgZone, ModuleWithProviders, Component, ViewEncapsulation, ViewChild, ElementRef, Renderer, EventEmitter, ChangeDetectionStrategy, Input, Output, OnInit } from '@angular/core';
 import { MdButtonModule, MdButton, MdIconRegistry, MdIconModule } from '@angular/material';
 import { ITopbarActionsComponent, NavigationDataService } from '../admin/settings/navigation';
+import { AppMenuComponent } from '../shared';
 
 
 
