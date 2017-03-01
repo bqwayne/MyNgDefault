@@ -1,5 +1,5 @@
 [
-    {"actionName": "alert", "routeType": "alert", "target": "Alert icon clicked!", "icon": "fa-bell"},
+    {"actionName": "alert", "routeType": "menu", "target": "alert-menu", "icon": "fa-bell"},
     {"actionName": "help", "routeType": "alert", "target": "Help icon clicked!", "icon": "fa-question"},
     {"actionName": "menu", "routeType": "alert", "target": "Menu icon clicked!", "icon": "fa-bars"},
     {"actionName": "admin", "routeType": "route", "target": "admin", "icon": "fa-user"}

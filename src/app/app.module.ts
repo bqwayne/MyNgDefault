@@ -23,7 +23,7 @@ import {  ITopbarActionsComponent,
           RouteTypesDisplayComponent } from './admin/settings/navigation';
 import { ConfigDefaultsService } from './admin/config';
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent, DialogDisplayComponent } from './shared';
+import { DialogComponent, DialogDisplayComponent, ActionTypeDirective } from './shared';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import { DialogComponent, DialogDisplayComponent } from './shared';
     RouteTypesDisplayComponent,
     AppRoutesComponent,
     DialogComponent,
-    DialogDisplayComponent
+    DialogDisplayComponent,
+    ActionTypeDirective
   ],
   imports: [
     BrowserModule,

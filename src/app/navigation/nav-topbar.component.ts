@@ -3,6 +3,7 @@ import { MdButtonModule, MdButton, MdIconRegistry, MdIconModule } from '@angular
 import { ITopbarActionsComponent, NavigationDataService } from '../admin/settings/navigation';
 
 
+
 @Component({
   selector: 'app-nav-topbar-action',
   templateUrl: './nav-topbar-actions.component.html',
