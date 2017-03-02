@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, ElementRef, ViewChild, NgZone, Renderer } from '@angular/core';
-import { AngularFire } from 'angularfire2';
+import { AuthFire } from './shared';
 import { ITopbarActionsComponent, NavigationDataService, ISideBarItemComponent } from './admin/settings/navigation';
 import { MdIconRegistry } from '@angular/material';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { AppMenuComponent } from './shared';
   providers: [NavigationDataService]
 })
 export class AppComponent implements OnInit {
-  user = {};
+  public isLoggedIn: boolean;
   topBarActions: ITopbarActionsComponent[];
   sideBarItems: ISideBarItemComponent[];
   selectedSideBarItem: ISideBarItemComponent;
@@ -25,17 +25,16 @@ export class AppComponent implements OnInit {
               private _router: Router,
               private _ngZone: NgZone,
               private _navigationdataservice: NavigationDataService,
-              public af: AngularFire){}
+              public af: AuthFire){}
 
   public ngOnInit() {
-    this.af.auth.subscribe( user => {
-      if (user) {
-        this.user = user;
+    this.af.authFire.auth.subscribe( auth => {
+      if (auth) {
+        this.isLoggedIn = true;
       }
       else {
-        this.user = {};
+        this.isLoggedIn = false;
       }
-      console.log(this.user);
     })
     console.log('App has initialized!!');
     this._navigationdataservice.getTopBarNav().subscribe(response => this.topBarActions = response);
@@ -43,12 +42,8 @@ export class AppComponent implements OnInit {
       
   }
 
-  login() {
-    this.af.auth.login({})
-  }
-
   logout() {
-    this.af.auth.logout;
+    this.af.authFire.auth.logout;
   }
 
   public sideBarItemSelected(sideBarItem: ISideBarItemComponent){

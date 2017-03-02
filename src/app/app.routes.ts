@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
+import { LoginPageComponent } from './login-page';
 import { DataIoComponent } from './data-io'
 //import { AboutComponent } from './about';
 //import { BillComponent } from './bill';
@@ -9,6 +10,7 @@ import { DataIoComponent } from './data-io'
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
+  { path: 'login', component: LoginPageComponent},
   { path: 'about', component: HomeComponent },
   { path: 'bill',  component: HomeComponent },
   { path: 'partner',  component: HomeComponent },

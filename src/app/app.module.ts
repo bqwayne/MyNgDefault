@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import { AngularFireModule, AuthMethods } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import 'hammerjs';
 
@@ -12,7 +12,7 @@ import { ROUTES } from './app.routes';
 import { firebaseConfig, firebaseAuthConfig } from './app.firebase';
 
 import { AppComponent } from './app.component';
-
+import { LoginPageComponent } from './login-page'
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
@@ -28,7 +28,7 @@ import {  ITopbarActionsComponent,
           MenuItemService } from './admin/settings/navigation';
 import { ConfigDefaultsService } from './admin/config';
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent } from './shared';
+import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent, AuthFire } from './shared';
 import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
 
 @NgModule({
@@ -36,6 +36,7 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     AppComponent,
     AdminComponent,
     HomeComponent,
+    LoginPageComponent,
     NavTopbarComponent,
     NavTopbarActionComponent,
     NavSidebarListComponent,
@@ -67,7 +68,7 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     DialogDisplayComponent,
     RouteTypesComponent
   ],
-  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService],
+  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService, AuthFire],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
