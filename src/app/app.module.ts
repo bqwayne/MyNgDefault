@@ -4,12 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { AngularFireModule, AuthMethods } from 'angularfire2';
 
 import 'hammerjs';
 
 import { ROUTES } from './app.routes';
+import { firebaseConfig, firebaseAuthConfig } from './app.firebase';
 
 import { AppComponent } from './app.component';
+
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
@@ -26,7 +29,7 @@ import {  ITopbarActionsComponent,
 import { ConfigDefaultsService } from './admin/config';
 import { AppRoutesComponent } from './admin/settings/routes';
 import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent } from './shared';
-
+import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
 
 @NgModule({
   declarations: [
@@ -46,13 +49,16 @@ import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuCo
     DialogComponent,
     DialogDisplayComponent,
     AppMenuComponent,
-    ActionTypeDirective
+    ActionTypeDirective,
+    DataIoComponent,
+    DataIoFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules}),
     MaterialModule
   ],
@@ -61,7 +67,7 @@ import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuCo
     DialogDisplayComponent,
     RouteTypesComponent
   ],
-  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService],
+  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

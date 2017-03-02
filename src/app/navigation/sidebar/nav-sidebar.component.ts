@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, Output, ChangeDetectionStrategy, EventEmitter, Renderer, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { MdButtonModule, MdButton, MdIconRegistry, MdIconModule } from '@angular/material';
-import { ISideBarItemComponent } from '../admin/settings/navigation';
+import { ISideBarItemComponent } from '../../admin/settings/navigation';
 
 @Component({
   selector: 'app-nav-sidebar-item',

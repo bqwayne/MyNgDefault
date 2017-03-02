@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MdIconRegistry, MdDialog, MdDialogRef } from '@angular/material';
-import { NavigationDataService, ITopbarActionsComponent } from './'
+import { NavigationDataService, ITopbarActionsComponent } from '../';
 
 
 @Component({
@@ -16,17 +17,22 @@ import { NavigationDataService, ITopbarActionsComponent } from './'
 export class TopBarNavigationSettingsComponent implements OnInit {
     @Input('topBarNavigationItems') topBarNavigationItems: ITopbarActionsComponent[];
     @Input('routeTypes') routeTypes;
+    
 
     constructor(private mdIconRegistry: MdIconRegistry,
-                private dialog: MdDialog,) {
+                private dialog: MdDialog) {
     mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
    }
 
     ngOnInit() {
+
     }
-    openDialog(routeTypes) {
+    openDialog(routeTypes, topBarNavItem?: ITopbarActionsComponent) {
         let dialogRef = this.dialog.open(RouteTypesComponent);
         dialogRef.componentInstance.routeTypes = routeTypes;
+        if (topBarNavItem) {
+            dialogRef.componentInstance.currentTopBarNavItem = topBarNavItem;
+        }
     }
 }
 
@@ -37,9 +43,26 @@ export class TopBarNavigationSettingsComponent implements OnInit {
 })
 export class RouteTypesComponent implements OnInit {
     @Input() routeTypes;
-    constructor(){}
+    @Input() currentTopBarNavItem?: ITopbarActionsComponent;
+    topBarItemForm: FormGroup;
+
+    constructor(private formBuilder: FormBuilder){}
 
     ngOnInit() {
+        this.topBarItemForm = this.formBuilder.group({
+            actionNameInput: '',
+            iconInput: '',
+            routeTypeInput: '',
+            targetInput: ''
+        });
+        if (this.currentTopBarNavItem){
+            this.topBarItemForm.setValue({
+                actionNameInput: this.currentTopBarNavItem.actionName,
+                iconInput: this.currentTopBarNavItem.icon,
+                routeTypeInput: this.currentTopBarNavItem.routeType,
+                targetInput: this.currentTopBarNavItem.target
+            });
+        }
     }
 }
 

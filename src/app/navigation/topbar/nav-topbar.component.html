@@ -2,8 +2,6 @@
   <md-icon class="md-top-bar-logo" fontSet="fontawesome" fontIcon="fa-rebel"></md-icon>
   <div class="md-top-bar-title">Home</div>
 
-  <!--<md-input-container *ngIf="_showInputContainer" (searchClick)="inputSearchClick($event)"
-                       [iconSearch]="true">-->
   <md-input-container *ngIf="_showInputContainer" (searchClick)="inputSearchClick($event)">                       
     <input mdInput #input (keyup.enter)="search(input.value)" type="text" placeholder="Search ..."
            aria-placeholder="Search ...">
@@ -12,17 +10,15 @@
       <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-search"></md-icon>
     </button>
   </md-input-container>
-  
+
   <button *ngIf="!_showInputContainer" (click)="searchClick()" md-icon-button>
     <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-search"></md-icon>
   </button> 
 
-  <div class="mat-top-bar-actions">
-    <div class="top-bar-action" *ngFor="let topBarAction of topBarActionsList">
-      <app-nav-topbar-action [topBarAction]="topBarAction"
-                            (click)="itemClicked(topBarAction);$event.stopPropogation;">
-      </app-nav-topbar-action>
-    </div>
+  <div class="top-bar-action" *ngFor="let topBarAction of topBarActionsList">
+    <app-nav-topbar-action [topBarAction]="topBarAction"
+                          (click)="itemClicked(topBarAction);$event.stopPropogation;">
+    </app-nav-topbar-action>
   </div>
 
 </md-toolbar>

@@ -16,7 +16,9 @@
                 <td>{{ topBarNavItem.routeType }}</td>
                 <td>{{ topBarNavItem.target }}</td>
                 <td>
-                    <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon>
+                    <button md-button (click)="openDialog(routeTypes,topBarNavItem);">
+                        <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-pencil"></md-icon>
+                    </button>
                     <md-icon class="mat-search-top-bar" fontSet="fontawesome" fontIcon="fa-eraser"></md-icon>
                 </td>
             </tr>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable, Input, ElementRef, Renderer } from '@angular/core';
-import { MdMenuModule, MdMenu } from '@angular/material';
+import { MdMenuModule, MdMenu, MdMenuTrigger } from '@angular/material';
 import { MenuItemService, IMenus, ITopbarActionsComponent } from '../../admin/settings/navigation';
 
 @Component({
@@ -23,10 +23,10 @@ export class AppMenuComponent implements OnInit {
             this.menuItems.forEach(menuItem =>{
                 if (menuItem.menuName === this.menuName) {
                     this.selectedMenuItem = menuItem;
-                    console.log(this.selectedMenuItem);
+                    console.log("The selectedMenuItem.menuType is: " + this.selectedMenuItem.menuType);
                 }
             });
         });
-        
+       
     }
 }

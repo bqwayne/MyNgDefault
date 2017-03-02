@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { MdIconRegistry, MdDialog, MdDialogRef } from '@angular/material';
-import { NavigationDataService, ISideBarItemComponent } from './'
+import { NavigationDataService, ISideBarItemComponent } from '../';
 
 
 @Component({

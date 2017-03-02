@@ -1,0 +1,18 @@
+<h1>Hello</h1>
+
+<br>
+<ul>
+    <li *ngFor="let data of dataItems">Menu Name: {{ data.menuName }} of type {{ data.menuType }} with 
+        <p *ngIf="(data.menuListSource)">Menu List Source: {{ data.menuListSource }}</p>
+        <div *ngIf="(data.menuListItems)">
+            <p>Menu List Items</p>
+            <ul *ngFor="let menuListItem of data.menuListItems">
+                <li>Menu Item Name: {{ menuListItem.menuItemName }} routes to {{ menuListItem.route }}</li>
+            </ul>
+        </div> 
+    </li>
+</ul>
+<button *ngIf="!(_showForm)" md-button-raised (click)="toggleForm()">Add New Data Item</button>
+<button *ngIf="(_showForm)" md-button-raised (click)="toggleForm()">Hide Data Item Form</button>
+
+<data-io-form *ngIf="(_showForm)"></data-io-form>

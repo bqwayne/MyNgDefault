@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { DialogComponent, DialogDisplayComponent } from '../shared';
 
 @Component({
@@ -8,10 +9,12 @@ import { DialogComponent, DialogDisplayComponent } from '../shared';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  items: FirebaseListObservable<any[]>;
 
-  constructor(private dialog: MdDialog) { }
+  constructor(private dialog: MdDialog, private af: AngularFire) { }
 
   ngOnInit() {
+    this.items = this.af.database.list('/items');
   }
 
   openDialog(){

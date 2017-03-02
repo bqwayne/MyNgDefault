@@ -1,0 +1,15 @@
+<h1>Add new Data Item</h1>
+
+<form [formGroup]="dataIoForm" (ngSubmit)="submit(dataIoForm)">
+    <md-input-container>
+        <input mdInput formControlName="menuName" type="text" placeholder="Action Name">
+    </md-input-container>
+    <md-input-container>
+        <input mdInput formControlName="menuType" type="text" placeholder="Menu Type">
+    </md-input-container>
+    <br>
+    <md-dialog-actions>
+        <button md-button>Save</button>
+        <button md-button (click)="cancel()">Cancel</button>
+    </md-dialog-actions>
+</form>

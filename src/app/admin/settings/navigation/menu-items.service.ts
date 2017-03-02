@@ -17,7 +17,8 @@ export interface IMenuItems {
   id?: number;
   menuItemName: string;
   icon?: string;
-  route: string
+  route: string;
+  subMenuItems?: Array<IMenuItems>;
 }
 
 @Injectable()
