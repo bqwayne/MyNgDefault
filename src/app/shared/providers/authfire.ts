@@ -4,12 +4,17 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 @Injectable()
 export class AuthFire {
     public messages: FirebaseListObservable<any>;
+    public config: FirebaseListObservable<any>;
+    public items: FirebaseListObservable<any>;
     public users: FirebaseListObservable<any>;
     public displayName: string;
     public email: string;
 
     constructor(public authFire: AngularFire){
         this.messages = this.authFire.database.list('messages');
+        this.config = this.authFire.database.list('config/defaults/routeTypes');
+        this.items = this.authFire.database.list('items');
+
     }
 
     sendMessage(text) {

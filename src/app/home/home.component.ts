@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { DialogComponent, DialogDisplayComponent } from '../shared';
+import { FirebaseListObservable } from 'angularfire2';
+import { DialogComponent, DialogDisplayComponent, AuthFire } from '../shared';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,15 @@ import { DialogComponent, DialogDisplayComponent } from '../shared';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  items: FirebaseListObservable<any[]>;
+  configItems: FirebaseListObservable<any>;
+  items: FirebaseListObservable<any>;
 
-  constructor(private dialog: MdDialog, private af: AngularFire) { }
+  constructor(private dialog: MdDialog, private af: AuthFire) { }
 
   ngOnInit() {
-    this.items = this.af.database.list('/config/');
-    console.log(this.items);
+    this.configItems = this.af.config;
+    this.items = this.af.items;
+    console.log(this.configItems);
   }
 
   openDialog(){

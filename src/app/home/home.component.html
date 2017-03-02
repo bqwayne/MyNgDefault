@@ -13,6 +13,9 @@
 <button md-raised-button (click)="openDialog()">This is a md-dialog.</button>
 <br>
 <ul>
-  <li *ngFor="let item of items | async">{{item.$value}}</li>
+  <li *ngFor="let configItem of configItems | async">{{configItem.$value}}</li>
 </ul>
   
+<ul>
+  <li *ngFor="let item of items | async">{{item.$value}}</li>
+</ul>
