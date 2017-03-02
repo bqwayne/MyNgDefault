@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MdDialog, private af: AngularFire) { }
 
   ngOnInit() {
-    this.items = this.af.database.list('/items');
+    this.items = this.af.database.list('/config/');
+    console.log(this.items);
   }
 
   openDialog(){

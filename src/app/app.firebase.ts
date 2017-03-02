@@ -5,8 +5,3 @@ export const firebaseConfig = {
     storageBucket: "ngmaterialnavigation.appspot.com",
     messagingSenderId: "7014833311"
   };
-
-export const firebaseAuthConfig = {
-  email: 'wjallsup@yahoo.com',
-  password: 'P@ssw0rd',
-};

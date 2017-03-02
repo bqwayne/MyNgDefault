@@ -28,12 +28,15 @@ export class AppComponent implements OnInit {
               public af: AuthFire){}
 
   public ngOnInit() {
-    this.af.authFire.auth.subscribe( auth => {
-      if (auth) {
+    this.af.authFire.auth.subscribe(auth => {
+      if (!!auth) {
         this.isLoggedIn = true;
+        this.af.displayName = auth.google.displayName;
+        this.af.email = auth.google.email;
       }
       else {
         this.isLoggedIn = false;
+        this._router.navigate['login'];
       }
     })
     console.log('App has initialized!!');

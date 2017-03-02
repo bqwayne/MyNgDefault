@@ -9,10 +9,12 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import 'hammerjs';
 
 import { ROUTES } from './app.routes';
-import { firebaseConfig, firebaseAuthConfig } from './app.firebase';
+import { firebaseConfig } from './app.firebase';
 
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page'
+import { LoginPageComponent } from './login-page';
+import { RegistrationPageModule } from './registration-page';
+import { MessagePageComponent } from './message-page';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
@@ -37,6 +39,8 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     AdminComponent,
     HomeComponent,
     LoginPageComponent,
+    RegistrationPageModule,
+    MessagePageComponent,
     NavTopbarComponent,
     NavTopbarActionComponent,
     NavSidebarListComponent,
@@ -59,7 +63,7 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules}),
     MaterialModule
   ],

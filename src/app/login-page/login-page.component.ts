@@ -11,17 +11,23 @@ styleUrls: ['./login-page.component.scss']
 
 
 export class LoginPageComponent implements OnInit {
-
+    public errors: any;
 
     constructor(public authFire: AuthFire, private router: Router){}
 
+    ngOnInit() {}
 
-    ngOnInit() {
-
-
+    loginWithGoogle() {
+        this.authFire.loginWithGoogle().then(data => this.router.navigate(['']));
     }
 
-    login() {
-        this.authFire.loginWithEmail().then(data => this.router.navigate(['']));
+    loginWithEmail(event, email, password){
+        event.preventDefault();
+        this.authFire.loginWithEmail(email, password)
+            .then(() => this.router.navigate[''])
+                .catch(error => {
+                    this.errors = error,
+                    console.log(this.errors)
+                });
     }
 }
