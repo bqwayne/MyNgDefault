@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2';
 import { ISideBarItemComponent, ITopbarActionsComponent, NavigationDataService, RouteTypesComponent } from './settings/navigation';
-import { ConfigDefaultsService, IDefaults } from './config'
+import { UsersComponent } from './users'
+import { ConfigDefaultsService } from './config';
 import { ROUTES } from 'app/app.routes';
 
 @Component({
@@ -14,9 +16,8 @@ export class AdminComponent implements OnInit {
     topBarItems: ITopbarActionsComponent[];
     sideBarItems: ISideBarItemComponent[];
     ROUTES: Routes;
-    defaults: IDefaults;
-    routeTypes: string[];
-    defaultUser: string;
+    routeTypes: FirebaseListObservable<any[]>;
+    users: FirebaseListObservable<any[]>;
 
     constructor(private _navigationdataservice: NavigationDataService,
                 private _configdefaultsservice: ConfigDefaultsService){}
@@ -24,11 +25,9 @@ export class AdminComponent implements OnInit {
     ngOnInit(){
         this._navigationdataservice.getTopBarNav().subscribe(response => this.topBarItems = response);
         this._navigationdataservice.getSideBarNav().subscribe(response => this.sideBarItems = response);
-        this._configdefaultsservice.getDefaults().subscribe(response => {
-            this.defaults = response;
-            this.routeTypes = this.defaults.routeTypes;
-            this.defaultUser = this.defaults.user;
-        });
+        this.users = this._configdefaultsservice.getUsers();
+        this.routeTypes = this._configdefaultsservice.getRouteTypes();
+
         this.ROUTES = ROUTES;
     }
 }

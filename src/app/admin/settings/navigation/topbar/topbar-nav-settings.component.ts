@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MdIconRegistry, MdDialog, MdDialogRef } from '@angular/material';
+import { FirebaseListObservable } from 'angularfire2';
 import { NavigationDataService, ITopbarActionsComponent } from '../';
 
 
@@ -71,7 +72,7 @@ export class RouteTypesComponent implements OnInit {
     templateUrl: './topbar-route-types-display.html'
 })
 export class RouteTypesDisplayComponent implements OnInit {
-    @Input() routeTypes;
+    @Input() routeTypes: FirebaseListObservable<any[]>;
 
     constructor(){}
 

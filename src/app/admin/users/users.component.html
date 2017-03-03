@@ -1,0 +1,6 @@
+<md-card>
+    <h1>Users</h1>
+    <md-list>
+        <md-list-item *ngFor="let user of users | async">{{user.$value}}</md-list-item>
+    </md-list>
+</md-card>

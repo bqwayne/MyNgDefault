@@ -1,27 +1,31 @@
 import { Injectable, ModuleWithProviders, OnInit} from '@angular/core';
+import { FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs'
 import { Http } from '@angular/http';
+
+import { AuthFire } from '../../shared';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-export interface IDefaults {
-    routeTypes: string[];
-    user: string; 
-}
-
 @Injectable()
 export class ConfigDefaultsService implements OnInit {
-    configDefaultsLoc: string = 'src/app/admin/config/defaults.json';
+    configDefaultsBase: string = 'config/defaults';
+    routeTypesLoc: string = this.configDefaultsBase + '/routeTypes';
+    usersLoc: string = this.configDefaultsBase + '/users';
 
-    constructor(private http: Http){}
+    constructor(private http: Http, public af: AuthFire){}
 
     ngOnInit() {
 
     }
 
-    getDefaults(): Observable<IDefaults> {
-        return this.http.get(this.configDefaultsLoc).map(response => response.json());
+    getUsers() {
+        return this.af.authFire.database.list(this.usersLoc);
+    }
+
+    getRouteTypes(){
+        return this.af.authFire.database.list(this.routeTypesLoc);
     }
 
 }

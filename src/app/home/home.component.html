@@ -1,7 +1,16 @@
 <h1>
   {{title}}
 </h1>
-<p>Hello World!</p>
+<div *ngIf="(loggedIn)">
+  <p *ngIf="(greetingsName)">Hello {{ greetingsName }}!!!</p>
+  <p *ngIf="!(greetingsName)">Hello!!!</p>
+</div>
+<div *ngIf="!(loggedIn)">
+  <p>Hello and Welcome!</p>
+  <p>Please <a [routerLink]="['/login']">login</a></p>
+</div>
+
+<hr>
 
 <div>
     <a md-button color="primary">Flat button</a>
@@ -12,10 +21,3 @@
 <br>
 <button md-raised-button (click)="openDialog()">This is a md-dialog.</button>
 <br>
-<ul>
-  <li *ngFor="let configItem of configItems | async">{{configItem.$value}}</li>
-</ul>
-  
-<ul>
-  <li *ngFor="let item of items | async">{{item.$value}}</li>
-</ul>

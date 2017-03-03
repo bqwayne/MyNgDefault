@@ -3,7 +3,7 @@
     {
       "displayName": "Partners", "route": "partner", "icon": "fa-handshake-o",
       "subItems": [
-        {"displayName": "Partners Home", "route": "partner", "icon": "fa-handshake-o"},
+        {"displayName": "Partners Home", "route": "partners", "icon": "fa-handshake-o"},
         {"displayName": "NAM List", "route": "partner-list", "icon": "fa-handshake-o"},
         {"displayName": "Types", "route": "partner-types", "icon": "fa-handshake-o"}
       ]

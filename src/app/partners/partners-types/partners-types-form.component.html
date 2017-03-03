@@ -1,0 +1,16 @@
+<form novalidate (ngSubmit)="savePartnersType()" [formGroup]="partnerTypesForm">
+    <md-input-container label="Short Name">
+        <input mdInput formControlName="typeShortName" placeholder="Short Name">
+    </md-input-container>
+    <md-input-container label="Long Name">
+        <input mdInput formControlName="typeLongName" placeholder="Long Name">
+    </md-input-container>
+    <md-input-container label="Description">
+        <textarea mdInput formControlName="description" placeholder="Description"></textarea>
+    </md-input-container>
+    <md-dialog-actions>
+        <button md-raised-button (click)="dialogRef.close(partnerTypesForm.value)">Save</button>
+        <button md-raised-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+    
+</form>

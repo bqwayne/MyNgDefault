@@ -17,6 +17,7 @@ import { RegistrationPageModule } from './registration-page';
 import { MessagePageComponent } from './message-page';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
+import { PartnersComponent, PartnersService, PartnersTypesComponent, PartnersTypeFormComponent } from './partners';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
 import {  ITopbarActionsComponent, 
           ISideBarItemComponent, 
@@ -29,6 +30,7 @@ import {  ITopbarActionsComponent,
           IMenus,
           MenuItemService } from './admin/settings/navigation';
 import { ConfigDefaultsService } from './admin/config';
+import { UsersComponent } from './admin/users'
 import { AppRoutesComponent } from './admin/settings/routes';
 import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent, AuthFire } from './shared';
 import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
@@ -38,6 +40,9 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     AppComponent,
     AdminComponent,
     HomeComponent,
+    PartnersComponent,
+    PartnersTypesComponent,
+    PartnersTypeFormComponent,
     LoginPageComponent,
     RegistrationPageModule,
     MessagePageComponent,
@@ -50,6 +55,7 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     SideBarItemDialog,
     RouteTypesComponent,
     RouteTypesDisplayComponent,
+    UsersComponent,
     AppRoutesComponent,
     DialogComponent,
     DialogDisplayComponent,
@@ -70,9 +76,10 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
   entryComponents: [
     SideBarItemDialog,
     DialogDisplayComponent,
-    RouteTypesComponent
+    RouteTypesComponent,
+    PartnersTypeFormComponent
   ],
-  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService, AuthFire],
+  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService, AuthFire, PartnersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

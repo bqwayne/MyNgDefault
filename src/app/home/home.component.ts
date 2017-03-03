@@ -9,15 +9,14 @@ import { DialogComponent, DialogDisplayComponent, AuthFire } from '../shared';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  configItems: FirebaseListObservable<any>;
-  items: FirebaseListObservable<any>;
+  loggedIn: boolean;
+  greetingsName: string;
 
   constructor(private dialog: MdDialog, private af: AuthFire) { }
 
   ngOnInit() {
-    this.configItems = this.af.config;
-    this.items = this.af.items;
-    console.log(this.configItems);
+    this.loggedIn = this.af.isLoggedIn;
+    this.greetingsName = this.af.displayName;
   }
 
   openDialog(){

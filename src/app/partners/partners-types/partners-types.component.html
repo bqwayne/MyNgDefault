@@ -1,0 +1,23 @@
+<h1>Partners Types</h1>
+<hr>
+<md-card>
+    <table>
+        <thead>
+            <th>Partners Type (Short Name)</th>
+            <th>Partners Type (Long Name)</th>
+            <th>Description</th>
+        </thead>
+        <tbody *ngIf="(partnersTypes) && partnersTypes.length>0" class="data-tbody">
+            <tr *ngFor="let partnersType of partnersTypes | async">
+                <td class="text-cell">{{ partnerType.typeShortName }}</td>
+                <td class="text-cell">{{ partnerType.typeLongName }}</td>
+                <td class="text-cell">{{ partnerType.description }}</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="!(partnersTypes)" class="data-tbody">
+            <tr><td colspan="3" class="text-cell">No partners types found</td></tr>
+        </tbody>
+    </table>
+</md-card>
+<br>
+<button md-raised-button (click)="openDialog()">Add Partners Type</button>
