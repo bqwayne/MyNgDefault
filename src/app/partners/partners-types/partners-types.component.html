@@ -6,15 +6,20 @@
             <th>Partners Type (Short Name)</th>
             <th>Partners Type (Long Name)</th>
             <th>Description</th>
+            <th>Actions</th>
         </thead>
-        <tbody *ngIf="(partnersTypes) && partnersTypes.length>0" class="data-tbody">
-            <tr *ngFor="let partnersType of partnersTypes | async">
-                <td class="text-cell">{{ partnerType.typeShortName }}</td>
-                <td class="text-cell">{{ partnerType.typeLongName }}</td>
-                <td class="text-cell">{{ partnerType.description }}</td>
+        <tbody *ngIf="(partnersTypesList)" class="data-tbody">
+            <tr *ngFor="let partnersType of partnersTypesList | async">
+                <td class="text-cell">{{ partnersType.typeShortName }}</td>
+                <td class="text-cell">{{ partnersType.typeLongName }}</td>
+                <td class="text-cell">{{ partnersType.description }}</td>
+                <td>
+                    <button md-icon-button (click)="openDialog(partnersType)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                    <button md-icon-button (click)="deletePartnersType(partnersType.$key)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                </td>
             </tr>
         </tbody>
-        <tbody *ngIf="!(partnersTypes)" class="data-tbody">
+        <tbody *ngIf="!(partnersTypesList)" class="data-tbody">
             <tr><td colspan="3" class="text-cell">No partners types found</td></tr>
         </tbody>
     </table>

@@ -9,7 +9,7 @@
         <textarea mdInput formControlName="description" placeholder="Description"></textarea>
     </md-input-container>
     <md-dialog-actions>
-        <button md-raised-button (click)="dialogRef.close(partnerTypesForm.value)">Save</button>
+        <button md-raised-button md-dialog-close (click)="savePartnersType(partnerTypesForm.value)">Save</button>
         <button md-raised-button md-dialog-close>Cancel</button>
     </md-dialog-actions>
     

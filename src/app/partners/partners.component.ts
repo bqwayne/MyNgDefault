@@ -18,6 +18,5 @@ export class PartnersComponent implements OnInit {
 
     ngOnInit() {
         this.partnersList = this.partnersservice.getPartners();
-
     }
 }

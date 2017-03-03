@@ -6,8 +6,8 @@ import { AuthFire } from '../shared';
 export class PartnersService implements OnInit{
     partnersLocBase: string = 'partnerPortal';
     partnersListLoc: string = this.partnersLocBase + '/partners';
-    partnerTypesLoc: string = this.partnersLocBase + '/types';
-    partnerLevelsLoc: string = this.partnersLocBase + '/levels';
+    partnerTypesLoc: string = this.partnersLocBase + '/partnerTypes';
+    partnerLevelsLoc: string = this.partnersLocBase + '/partnerLevels';
     competenciesLoc: string = this.partnersLocBase + '/competencies';
     competencyStatusesLoc: string = this.partnersLocBase + '/competencyLevels';
     partnersList: FirebaseListObservable<any[]>;
@@ -29,7 +29,13 @@ export class PartnersService implements OnInit{
     }
 
     setPartnersType(partnerType) {
-        this.partnerTypesList = this.af.authFire.database.list(this.partnerTypesLoc);
+        let partnerTypeEdit = {
+            typeShortName: partnerType.typeShortName,
+            typeLongName: partnerType.typeLongName,
+            description: partnerType.description,
+            updatedAt: Date.now()
+        }
+        this.partnerTypesList.update(partnerType.key, partnerTypeEdit);
     }
 
     addPartnersType(partnerType) {
@@ -40,11 +46,12 @@ export class PartnersService implements OnInit{
             createdAt: Date.now(),
             updatedAt: Date.now()
         };
+        //console.log(partnerTypeAdd);
         this.partnerTypesList.push(partnerTypeAdd);
     }
 
-    deletePartnersType(partnerType) {
-        this.partnerTypesList = this.af.authFire.database.list(this.partnerTypesLoc);
+    deletePartnersType(key) {
+        this.partnerTypesList.remove(key);
     }    
 
     // Partners Levels CRUD
