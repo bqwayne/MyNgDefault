@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
-import { PartnersComponent, PartnersTypesComponent } from './partners';
+import { PartnersComponent, PartnersTypesComponent, PartnersTiersComponent, ProgramMgmtComponent, CompetenciesComponent, CompetencyLevelsComponent } from './partners';
 import { LoginPageComponent } from './login-page';
 import { RegistrationPageModule } from './registration-page';
 import { MessagePageComponent } from './message-page';
@@ -18,7 +18,11 @@ export const ROUTES: Routes = [
   { path: 'about', component: HomeComponent },
   { path: 'bill',  component: HomeComponent },
   { path: 'partners',  component: PartnersComponent },
+  { path: 'program-mgmt', component: ProgramMgmtComponent},
   { path: 'partner-types',  component: PartnersTypesComponent },
+  { path: 'partner-tiers',  component: PartnersTiersComponent },
+  { path: 'competencies', component: CompetenciesComponent},
+  { path: 'competency-levels', component: CompetencyLevelsComponent},
   { path: 'partner-list',  component: HomeComponent },
   { path: 'admin', component: AdminComponent},
   { path: 'data-io', component: DataIoComponent}

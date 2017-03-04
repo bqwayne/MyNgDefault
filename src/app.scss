@@ -146,7 +146,7 @@ table {
 
   th, td {
     padding: 0 $data-table-column-spacing 0 $data-table-column-padding;
-    text-align: right;
+    text-align: center;
 
     &:first-of-type {
       padding-left: $first-last-cell-padding;

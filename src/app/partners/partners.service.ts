@@ -7,21 +7,21 @@ export class PartnersService implements OnInit{
     partnersLocBase: string = 'partnerPortal';
     partnersListLoc: string = this.partnersLocBase + '/partners';
     partnerTypesLoc: string = this.partnersLocBase + '/partnerTypes';
-    partnerLevelsLoc: string = this.partnersLocBase + '/partnerLevels';
+    partnerTiersLoc: string = this.partnersLocBase + '/partnerTiers';
     competenciesLoc: string = this.partnersLocBase + '/competencies';
-    competencyStatusesLoc: string = this.partnersLocBase + '/competencyLevels';
+    competencyLevelsLoc: string = this.partnersLocBase + '/competencyLevels';
     partnersList: FirebaseListObservable<any[]>;
     partnerTypesList: FirebaseListObservable<any[]>;
-    partnerLevelsList: FirebaseListObservable<any[]>;
+    partnerTiersList: FirebaseListObservable<any[]>;
     competenciesList : FirebaseListObservable<any[]>;
-    competencyStatusesList: FirebaseListObservable<any[]>;
+    competencyLevelsList: FirebaseListObservable<any[]>;
 
     constructor(private af: AuthFire){}
 
     ngOnInit() {
     }
 
-// Partner Program levels, Partner Types, and competencies
+// Partner Program Tiers, Partner Types, and competencies
 
     // Partner Types CRUD
     getPartnersTypes() {
@@ -46,7 +46,6 @@ export class PartnersService implements OnInit{
             createdAt: Date.now(),
             updatedAt: Date.now()
         };
-        //console.log(partnerTypeAdd);
         this.partnerTypesList.push(partnerTypeAdd);
     }
 
@@ -54,21 +53,34 @@ export class PartnersService implements OnInit{
         this.partnerTypesList.remove(key);
     }    
 
-    // Partners Levels CRUD
-    getPartnersLevels() {
-        return this.partnerLevelsList = this.af.authFire.database.list(this.partnerLevelsLoc);
+    // Partners Tiers CRUD
+    getPartnersTiers() {
+        return this.partnerTiersList = this.af.authFire.database.list(this.partnerTiersLoc);
     }
 
-    setPartnersLevel(partnersLevel) {
-        this.partnerLevelsList = this.af.authFire.database.list(this.partnerLevelsLoc);
+    setPartnersTier(partnersTier) {
+        let partnersTierEdit = {
+            tierName: partnersTier.tierName,
+            description: partnersTier.description,
+            shortDesc: partnersTier.shortDesc,
+            updatedAt: Date.now()
+        }
+        this.partnerTiersList.update(partnersTier.key, partnersTierEdit);
     }
 
-    addPartnersLevel(partnersLevel) {
-        this.partnerLevelsList = this.af.authFire.database.list(this.partnerLevelsLoc);
+    addPartnersTier(partnersTier) {
+        let partnersTierAdd = {
+            tierName: partnersTier.tierName,
+            description: partnersTier.description,
+            shortDesc: partnersTier.shortDesc,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+        };
+        this.partnerTiersList.push(partnersTierAdd);
     }
 
-    deletePartnersLevel(partnersLevel) {
-        this.partnerLevelsList = this.af.authFire.database.list(this.partnerLevelsLoc);
+    deletePartnersTier(key) {
+        this.partnerTiersList.remove(key);
     }        
     // Competencies CRUD
     getCompetencies() {
@@ -76,32 +88,58 @@ export class PartnersService implements OnInit{
     }
 
     setCompetency(competency) {
-        this.competenciesList = this.af.authFire.database.list(this.competenciesLoc);
+        let competencyEdit = {
+            competencyName: competency.competencyName,
+            description: competency.description,
+            shortDesc: competency.shortDesc,
+            updatedAt: Date.now()
+        }
+        this.competenciesList.update(competency.key, competencyEdit);
     }
 
     addCompetency(competency) {
-        this.competenciesList = this.af.authFire.database.list(this.competenciesLoc);
+        let competencyAdd = {
+            competencyName: competency.competencyName,
+            description: competency.description,
+            shortDesc: competency.shortDesc,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+        };
+        this.competenciesList.push(competencyAdd);
     }
 
-    deleteCompetency(competency) {
-        this.competenciesList = this.af.authFire.database.list(this.competenciesLoc);
+    deleteCompetency(key) {
+        this.competenciesList.remove(key);
     }
 
-    // Competency Statuses CRUD
-    getCompetencyStatuses(){
-        return this.competencyStatusesList = this.af.authFire.database.list(this.competencyStatusesLoc);
+    // Competency Levels CRUD
+    getCompetencyLevels(){
+        return this.competencyLevelsList = this.af.authFire.database.list(this.competencyLevelsLoc);
     }
 
-    setCompetencyStatus(competencyStatus){
-        this.competencyStatusesList = this.af.authFire.database.list(this.competencyStatusesLoc);
+    setCompetencyLevel(competencyLevel){
+        let competencyLevelEdit = {
+            competencyLevelName: competencyLevel.competencyLevelName,
+            description: competencyLevel.description,
+            shortDesc: competencyLevel.shortDesc,
+            updatedAt: Date.now()
+        }
+        this.competencyLevelsList.update(competencyLevel.key, competencyLevelEdit);
     }
 
-    addCompetencyStatus(competencyStatus){
-        this.competencyStatusesList = this.af.authFire.database.list(this.competencyStatusesLoc);
+    addCompetencyLevel(competencyLevel){
+        let competencyLevelAdd = {
+            competencyLevelName: competencyLevel.competencyLevelName,
+            description: competencyLevel.description,
+            shortDesc: competencyLevel.shortDesc,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+        };
+        this.competencyLevelsList.push(competencyLevelAdd);
     }
 
-    deleteCompetencyStatus(competencyStatus){
-        this.competencyStatusesList = this.af.authFire.database.list(this.competencyStatusesLoc);
+    deleteCompetencyLevel(key){
+        this.competencyLevelsList.remove(key);
     }
 
 // Partners and Partner Details

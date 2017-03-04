@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn = this.af.isLoggedIn;
-    this.greetingsName = this.af.displayName;
+    //this.greetingsName = this.af.displayName;
   }
 
   openDialog(){

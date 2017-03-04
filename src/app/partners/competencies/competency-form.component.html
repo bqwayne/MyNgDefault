@@ -1,0 +1,15 @@
+<form novalidate [formGroup]="competencyForm">
+    <md-input-container label="Competency Name">
+        <input mdInput formControlName="competencyName" placeholder="Competency Name">
+    </md-input-container>
+    <md-input-container label="Short Description">
+        <textarea mdInput formControlName="shortDesc" placeholder="Short Description"></textarea>
+    </md-input-container>
+    <md-input-container label="Description">
+        <textarea mdInput formControlName="description" placeholder="Description"></textarea>
+    </md-input-container>
+    <md-dialog-actions>
+        <button md-raised-button md-dialog-close (click)="saveCompetency(competencyForm.value)">Save</button>
+        <button md-raised-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+</form>

@@ -5,7 +5,7 @@
       "subItems": [
         {"displayName": "Partners Home", "route": "partners", "icon": "fa-handshake-o"},
         {"displayName": "NAM List", "route": "partner-list", "icon": "fa-handshake-o"},
-        {"displayName": "Types", "route": "partner-types", "icon": "fa-handshake-o"}
+        {"displayName": "Program Mgmt", "route": "program-mgmt", "icon": "fa-handshake-o"}
       ]
     },
     {

@@ -1,0 +1,15 @@
+<form novalidate (ngSubmit)="savePartnersTier()" [formGroup]="partnersTierForm">
+    <md-input-container label="Tier Name">
+        <input mdInput formControlName="tierName" placeholder="Tier Name">
+    </md-input-container>
+    <md-input-container label="Short Description">
+        <textarea mdInput formControlName="shortDesc" placeholder="Short Description"></textarea>
+    </md-input-container>
+    <md-input-container label="Description">
+        <textarea mdInput formControlName="description" placeholder="Description"></textarea>
+    </md-input-container>
+    <md-dialog-actions>
+        <button md-raised-button md-dialog-close (click)="savePartnersTier(partnersTierForm.value)">Save</button>
+        <button md-raised-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+</form>

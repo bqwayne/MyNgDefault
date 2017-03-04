@@ -1,0 +1,47 @@
+<div *ngIf="viewType === 'full'">
+    <h1>Competencies</h1>
+    <hr>
+    <md-card>
+        <table>
+            <thead>
+                <th>Competencies</th>
+                <th>Description</th>
+                <th>Short Description</th>
+                <th>Actions</th>
+            </thead>
+            <tbody *ngIf="(competenciesList) && length > 0" class="data-tbody">
+                <tr *ngFor="let competency of competenciesList | async">
+                    <td class="text-cell">{{ competency.competencyName }}</td>
+                    <td class="text-cell">{{ competency.description }}</td>
+                    <td class="text-cell">{{ competency.shortDesc }}</td>
+                    <td>
+                        <button md-icon-button (click)="openDialog(competency)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                        <button md-icon-button (click)="deleteCompetency(competency.$key)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!(competenciesList) || length == 0" class="data-tbody">
+                <tr><td colspan="3" class="text-cell">No competencies found</td></tr>
+            </tbody>
+        </table>
+    </md-card>
+    <br>
+    <button md-raised-button (click)="openDialog()">Add Competency</button>
+</div>
+<div  *ngIf="viewType === 'brief'">
+    <md-card>
+        <md-card-header>
+            <md-card-title>Competencies</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <p *ngIf="!(competenciesList) || length == 0">No competencies found</p>
+            <md-list *ngIf="(competenciesList) && length > 0">
+                <md-list-item *ngFor="let competency of competenciesList | async">{{competency.competencyName}}: {{competency.shortDesc }}</md-list-item>
+            </md-list>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button color="primary" (click)="this.router.navigate(['/competencies'])">Go To Competencies</button>
+        </md-card-actions>       
+        <br>
+    </md-card>
+</div>

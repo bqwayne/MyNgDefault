@@ -1,0 +1,47 @@
+<div *ngIf="viewType === 'full'">
+    <h1>Competency Levels</h1>
+    <hr>
+    <md-card>
+        <table>
+            <thead>
+                <th>Competency Level</th>
+                <th>Description</th>
+                <th>Short Description</th>
+                <th>Actions</th>
+            </thead>
+            <tbody *ngIf="(competencyLevelsList) && length > 0" class="data-tbody">
+                <tr *ngFor="let competencyLevel of competencyLevelsList | async">
+                    <td class="text-cell">{{ competencyLevel.competencyLevelName }}</td>
+                    <td class="text-cell">{{ competencyLevel.description }}</td>
+                    <td class="text-cell">{{ competencyLevel.shortDesc }}</td>
+                    <td>
+                        <button md-icon-button (click)="openDialog(competencyLevel)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                        <button md-icon-button (click)="deleteCompetencyLevel(competencyLevel.$key)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!(competencyLevelsList) || length == 0" class="data-tbody">
+                <tr><td colspan="3" class="text-cell">No competency levels found</td></tr>
+            </tbody>
+        </table>
+    </md-card>
+    <br>
+    <button md-raised-button (click)="openDialog()">Add Competency Level</button>
+</div>
+<div  *ngIf="viewType === 'brief'">
+    <md-card>
+        <md-card-header>
+            <md-card-title>Competency Levels</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <p *ngIf="!(competencyLevelsList) || length == 0">No competency levels found</p>
+            <md-list *ngIf="(competencyLevelsList) && length > 0">
+                <md-list-item *ngFor="let competencyLevel of competencyLevelsList | async">{{competencyLevel.competencyLevelName}}: {{competencyLevel.shortDesc }}</md-list-item>
+            </md-list>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button color="primary" (click)="this.router.navigate(['/competency-levels'])">Go To Competency Levels</button>
+        </md-card-actions>       
+        <br>
+    </md-card>
+</div>

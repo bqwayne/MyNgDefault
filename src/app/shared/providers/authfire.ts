@@ -14,8 +14,8 @@ export class AuthFire {
         this.authFire.auth.subscribe(auth => {
             if (!!auth) {
                 this.isLoggedIn = true;
-                this.displayName = auth.google.displayName;
-                this.email = auth.google.email;
+                //this.displayName = auth.google.displayName;
+                //this.email = auth.google.email;
             }
             else {
                 this.isLoggedIn = false;

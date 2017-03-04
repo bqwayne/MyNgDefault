@@ -17,7 +17,17 @@ import { RegistrationPageModule } from './registration-page';
 import { MessagePageComponent } from './message-page';
 import { AdminComponent } from './admin';
 import { HomeComponent } from './home';
-import { PartnersComponent, PartnersService, PartnersTypesComponent, PartnersTypeFormComponent } from './partners';
+import {  PartnersComponent, 
+          PartnersService, 
+          PartnersTypesComponent, 
+          PartnersTypeFormComponent,
+          PartnersTiersComponent,
+          PartnersTierFormComponent,
+          ProgramMgmtComponent,
+          CompetenciesComponent,
+          CompetencyFormComponent,
+          CompetencyLevelsComponent,
+          CompetencyLevelFormComponent } from './partners';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
 import {  ITopbarActionsComponent, 
           ISideBarItemComponent, 
@@ -32,7 +42,7 @@ import {  ITopbarActionsComponent,
 import { ConfigDefaultsService } from './admin/config';
 import { UsersComponent } from './admin/users'
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent, AuthFire } from './shared';
+import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent, AuthFire, TruncatePipe } from './shared';
 import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
 
 @NgModule({
@@ -43,6 +53,13 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     PartnersComponent,
     PartnersTypesComponent,
     PartnersTypeFormComponent,
+    PartnersTiersComponent,
+    PartnersTierFormComponent,
+    CompetenciesComponent,
+    CompetencyFormComponent,
+    CompetencyLevelsComponent,
+    CompetencyLevelFormComponent,
+    ProgramMgmtComponent,
     LoginPageComponent,
     RegistrationPageModule,
     MessagePageComponent,
@@ -59,6 +76,7 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     AppRoutesComponent,
     DialogComponent,
     DialogDisplayComponent,
+    TruncatePipe,
     AppMenuComponent,
     ActionTypeDirective,
     DataIoComponent,
@@ -77,9 +95,20 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     SideBarItemDialog,
     DialogDisplayComponent,
     RouteTypesComponent,
-    PartnersTypeFormComponent
+    PartnersTypeFormComponent,
+    PartnersTierFormComponent,
+    CompetencyFormComponent,
+    CompetencyLevelFormComponent
   ],
-  providers: [NavigationDataService, ConfigDefaultsService, MenuItemService, DataIoService, AuthFire, PartnersService],
+  providers: [
+    NavigationDataService, 
+    ConfigDefaultsService, 
+    MenuItemService, 
+    DataIoService, 
+    AuthFire, 
+    PartnersService,
+    TruncatePipe
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

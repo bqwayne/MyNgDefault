@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { PartnersService, PartnersTypeFormComponent } from '../';
@@ -12,7 +12,9 @@ import { PartnersService, PartnersTypeFormComponent } from '../';
 
 
 export class PartnersTypesComponent implements OnInit {
+    @Input('viewType') viewType?: string;
     partnersTypesList: FirebaseListObservable<any[]>;
+    length;
 
     constructor(private partnersservice: PartnersService, 
                 public dialog: MdDialog,
@@ -22,6 +24,10 @@ export class PartnersTypesComponent implements OnInit {
 
     ngOnInit() {
         this.partnersTypesList = this.partnersservice.getPartnersTypes();
+        this.partnersTypesList.subscribe(response => this.length = response.length);
+        if (!this.viewType) {
+            this.viewType = 'full';
+        }
     }
 
     openDialog(partnersType?) {

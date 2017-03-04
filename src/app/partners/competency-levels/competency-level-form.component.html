@@ -1,0 +1,15 @@
+<form novalidate [formGroup]="competencyLevelForm">
+    <md-input-container label="Competency Level Name">
+        <input mdInput formControlName="competencyLevelName" placeholder="Competency Name">
+    </md-input-container>
+    <md-input-container label="Short Description">
+        <textarea mdInput formControlName="shortDesc" placeholder="Short Description"></textarea>
+    </md-input-container>
+    <md-input-container label="Description">
+        <textarea mdInput formControlName="description" placeholder="Description"></textarea>
+    </md-input-container>
+    <md-dialog-actions>
+        <button md-raised-button md-dialog-close (click)="saveCompetencyLevel(competencyLevelForm.value)">Save</button>
+        <button md-raised-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+</form>
