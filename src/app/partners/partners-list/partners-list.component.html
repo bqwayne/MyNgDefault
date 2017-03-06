@@ -1,0 +1,23 @@
+<h1>NAM Partners List</h1>
+<hr>
+<table>
+    <thead>
+        <th>Partner Name</th>
+        <th>Partner Type</th>
+        <th>Partner Tier</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let partner of partnersList | async">
+            <td>{{ partner.partnerName }}</td>
+            <td>{{ partner.partnerType.typeShortName }}</td>
+            <td>{{ partner.partnerTier.tierName }}</td>
+            <td>
+                <button md-icon-button [routerLink]="['/partner-details', partner.$key]" routerLinkActive="active"><md-icon fontSet="fontawesome" fontIcon="fa-info-circle"></md-icon></button>
+                <button md-icon-button (click)="openDialog(partner)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                <button md-icon-button (click)="deletePartner(partner.$key)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button md-raised-button (click)="openDialog()">Add Partner</button>

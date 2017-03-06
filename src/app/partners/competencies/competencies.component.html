@@ -30,18 +30,25 @@
 </div>
 <div  *ngIf="viewType === 'brief'">
     <md-card>
-        <md-card-header>
-            <md-card-title>Competencies</md-card-title>
-        </md-card-header>
         <md-card-content>
             <p *ngIf="!(competenciesList) || length == 0">No competencies found</p>
-            <md-list *ngIf="(competenciesList) && length > 0">
-                <md-list-item *ngFor="let competency of competenciesList | async">{{competency.competencyName}}: {{competency.shortDesc }}</md-list-item>
-            </md-list>
+            <table *ngIf="(competenciesList) && length > 0">
+                <thead>
+                    <th>Competency</th>
+                    <th>Short Desc</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>                
+                    <tr *ngFor="let competency of competenciesList | async">
+                        <td class="text-cell">{{competency.competencyName}}</td>
+                        <td class="text-cell">{{competency.shortDesc }}</td>
+                        <td class="text-cell">{{competency.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </md-card-content>
         <md-card-actions>
             <button md-raised-button color="primary" (click)="this.router.navigate(['/competencies'])">Go To Competencies</button>
         </md-card-actions>       
-        <br>
     </md-card>
 </div>

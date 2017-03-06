@@ -30,18 +30,25 @@
 </div>
 <div *ngIf="viewType === 'brief'">
     <md-card>
-        <md-card-header>
-            <md-card-title>Partner Types</md-card-title>
-        </md-card-header>
         <md-card-content>
             <p *ngIf="!(partnersTypesList) || length == 0">No partners tiers found</p>
-            <md-list *ngIf="(partnersTypesList) && length > 0">
-                <md-list-item *ngFor="let partnersType of partnersTypesList | async">{{ partnersType.typeShortName }}: {{ partnersType.typeLongName }}</md-list-item>
-            </md-list>
+            <table *ngIf="(partnersTypesList) && length > 0">
+                <thead>
+                    <th>Short Name</th>
+                    <th>Long Name</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let partnersType of partnersTypesList | async">
+                        <td class="text-cell">{{ partnersType.typeShortName }}</td>
+                        <td class="text-cell">{{ partnersType.typeLongName }}</td>
+                        <td class="text-cell">{{ partnersType.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </md-card-content>        
         <md-card-actions>
             <button md-raised-button color="primary" (click)="this.router.navigate['/partner-types']">Go To Partner Types</button>
         </md-card-actions>
     </md-card>
-
 </div>

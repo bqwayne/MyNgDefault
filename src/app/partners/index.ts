@@ -9,3 +9,6 @@ export * from './competencies/competencies.component';
 export * from './competencies/competency-form.component';
 export * from './competency-levels/competency-levels.component';
 export * from './competency-levels/competency-level-form.component';
+export * from './partners-list/partners-list.component';
+export * from './partners-list/partner-list-form.component';
+export * from './partner-details/partner-details.component';

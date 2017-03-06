@@ -1,0 +1,20 @@
+<form novalidate [formGroup]="partnerForm">
+    <label for="partnerName">Partner Name:</label>
+    <md-input-container label="Partner Name">
+        <input mdInput formControlName="partnerName" placeholder="Partner Name">
+    </md-input-container>
+    <br><br>
+    <label for="partnerType">Partner Type</label>
+    <md-select formControlName="partnerType" placeholder="Partner Type">
+        <md-option *ngFor="let partnerType of partnerTypeList | async" [value]=partnerType>{{ partnerType.typeShortName }}</md-option>
+    </md-select>
+    <br><br>
+    <label for="partnerTier">Partner Tier</label>
+    <md-select mdInput formControlName="partnerTier" placeholder="Partner Tier">
+        <md-option *ngFor="let partnerTier of partnerTierList | async" [value]=partnerTier>{{ partnerTier.tierName }}</md-option>
+    </md-select>
+    <md-dialog-actions>
+        <button md-raised-button md-dialog-close (click)="savePartner(partnerForm.value)">Save</button>
+        <button md-raised-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+</form>

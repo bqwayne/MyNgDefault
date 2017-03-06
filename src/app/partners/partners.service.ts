@@ -51,7 +51,11 @@ export class PartnersService implements OnInit{
 
     deletePartnersType(key) {
         this.partnerTypesList.remove(key);
-    }    
+    }
+
+    getPartnerTypeById(key) {
+        return this.af.authFire.database.object(this.partnerTypesLoc + '/' + key)
+    }
 
     // Partners Tiers CRUD
     getPartnersTiers() {
@@ -81,7 +85,11 @@ export class PartnersService implements OnInit{
 
     deletePartnersTier(key) {
         this.partnerTiersList.remove(key);
-    }        
+    }
+
+    getPartnerTierById(key){
+        return this.af.authFire.database.object(this.partnerTiersLoc + '/' + key);
+    }
     // Competencies CRUD
     getCompetencies() {
         return this.competenciesList = this.af.authFire.database.list(this.competenciesLoc);
@@ -145,6 +153,36 @@ export class PartnersService implements OnInit{
 // Partners and Partner Details
     getPartners() {
         return this.partnersList = this.af.authFire.database.list(this.partnersListLoc);
+    }
+
+    getPartnerById(key) {
+        return this.af.authFire.database.list(this.partnersListLoc + "/" + key);
+    }
+
+    setPartner(partner) {
+        let partnerEdit = {
+            partnerName: partner.partnerName,
+            partnerType: partner.partnerType,
+            partnerTier: partner.partnerTier,
+            updatedAt: Date.now()
+        }
+        this.partnersList.update(partner.key, partnerEdit);
+    }
+
+    addPartner(partner) {
+        let partnerAdd = {
+            partnerName: partner.partnerName,
+            partnerType: partner.partnerType,
+            partnerTier: partner.partnerTier,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+        };
+        this.partnersList.push(partnerAdd);        
+
+    }
+
+    deletePartner(key) {
+        this.partnersList.remove(key);
     }
 
 }

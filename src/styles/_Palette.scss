@@ -20,12 +20,12 @@ $md-palette-1: (
   17: #b1181e  // red
 );
 
-/* vdl-color using default palette 'vdl-palette-1'
+/* md-color using default palette 'vdl-palette-1'
   Examples of use:
-  vdl-color(15);
+  md-color(15);
 
   to specify a different color palette:
-  vdl-color(4, $some-other-palette);
+  md-color(4, $some-other-palette);
  */
 @function md-color($key, $palette:$md-palette-1) {
   @if map-has-key($palette, $key) {

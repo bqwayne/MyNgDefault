@@ -27,7 +27,11 @@ import {  PartnersComponent,
           CompetenciesComponent,
           CompetencyFormComponent,
           CompetencyLevelsComponent,
-          CompetencyLevelFormComponent } from './partners';
+          CompetencyLevelFormComponent,
+          PartnersListComponent,
+          PartnersListFormComponent,
+          PartnerDetailsComponent
+         } from './partners';
 import { NavTopbarComponent, NavTopbarActionComponent, NavSidebarListComponent, NavSidebarListItemComponent } from './navigation';
 import {  ITopbarActionsComponent, 
           ISideBarItemComponent, 
@@ -59,6 +63,9 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     CompetencyFormComponent,
     CompetencyLevelsComponent,
     CompetencyLevelFormComponent,
+    PartnersListComponent,
+    PartnersListFormComponent,
+    PartnerDetailsComponent,
     ProgramMgmtComponent,
     LoginPageComponent,
     RegistrationPageModule,
@@ -98,7 +105,8 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     PartnersTypeFormComponent,
     PartnersTierFormComponent,
     CompetencyFormComponent,
-    CompetencyLevelFormComponent
+    CompetencyLevelFormComponent,
+    PartnersListFormComponent
   ],
   providers: [
     NavigationDataService, 

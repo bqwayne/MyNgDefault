@@ -30,18 +30,25 @@
 </div>
 <div  *ngIf="viewType === 'brief'">
     <md-card>
-        <md-card-header>
-            <md-card-title>Partner Tiers</md-card-title>
-        </md-card-header>
         <md-card-content>
             <p *ngIf="!(partnersTiersList) || length == 0">No partners tiers found</p>
-            <md-list *ngIf="(partnersTiersList) && length > 0">
-                <md-list-item *ngFor="let partnersTier of partnersTiersList | async">{{partnersTier.tierName}}: {{partnersTier.shortDesc }}</md-list-item>
-            </md-list>
+            <table *ngIf="(partnersTiersList) && length > 0">
+                <thead>
+                    <th>Partners Tier</th>
+                    <th>Short Desc</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let partnersTier of partnersTiersList | async">
+                        <td class="text-cell">{{partnersTier.tierName}}</td>
+                        <td class="text-cell">{{partnersTier.shortDesc }}</td>
+                        <td class="text-cell">{{partnersTier.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </md-card-content>
         <md-card-actions>
             <button md-raised-button color="primary" (click)="this.router.navigate(['/partner-tiers'])">Go To Partners Tiers</button>
         </md-card-actions>       
-        <br>
     </md-card>
 </div>

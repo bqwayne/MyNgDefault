@@ -1,4 +1,4 @@
-<form novalidate (ngSubmit)="savePartnersType()" [formGroup]="partnerTypesForm">
+<form novalidate [formGroup]="partnerTypesForm">
     <md-input-container label="Short Name">
         <input mdInput formControlName="typeShortName" placeholder="Short Name">
     </md-input-container>
@@ -12,5 +12,4 @@
         <button md-raised-button md-dialog-close (click)="savePartnersType(partnerTypesForm.value)">Save</button>
         <button md-raised-button md-dialog-close>Cancel</button>
     </md-dialog-actions>
-    
 </form>

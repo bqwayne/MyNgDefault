@@ -1,12 +1,21 @@
 <h1>Partner Program Mgmt</h1>
 <hr>
-<table>
-    <tr>
-        <td><app-partners-types [viewType]="viewType"></app-partners-types></td>
-        <td><app-partners-tiers [viewType]="viewType"></app-partners-tiers></td>
-    </tr>
-    <tr>
-        <td><app-competencies  [viewType]="viewType"></app-competencies></td>
-        <td><app-competency-levels  [viewType]="viewType"></app-competency-levels></td>
-    </tr>
-</table>
+<md-tab-group>
+    <md-tab label="Partner Types">
+        <app-partners-types [viewType]="viewType"></app-partners-types>
+    </md-tab>
+    <md-tab label="Partner Tiers">
+        <app-partners-tiers [viewType]="viewType"></app-partners-tiers>
+    </md-tab>
+    <md-tab label="Competencies">
+        <app-competencies  [viewType]="viewType"></app-competencies>
+    </md-tab>
+    <md-tab label="Competency Levels">
+        <app-competency-levels  [viewType]="viewType"></app-competency-levels>
+    </md-tab>
+</md-tab-group>
+
+
+
+
+
