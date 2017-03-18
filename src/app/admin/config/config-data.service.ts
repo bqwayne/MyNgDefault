@@ -1,6 +1,6 @@
 import { Injectable, ModuleWithProviders, OnInit} from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2';
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
 
 import { AuthFire } from '../../shared';

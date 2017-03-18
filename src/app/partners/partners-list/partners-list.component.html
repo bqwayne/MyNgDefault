@@ -7,7 +7,7 @@
         <th>Partner Tier</th>
         <th>Actions</th>
     </thead>
-    <tbody>
+    <tbody *ngIf="(authProvider === 'Firebase')">
         <tr *ngFor="let partner of partnersList | async">
             <td>{{ partner.partnerName }}</td>
             <td>{{ partner.partnerType.typeShortName }}</td>
@@ -19,5 +19,17 @@
             </td>
         </tr>
     </tbody>
+    <tbody *ngIf="(authProvider === 'PartnerPortalAPI')">
+        <tr *ngFor="let partner of partnersList">
+            <td>{{ partner.partnername }}</td>
+            <td>{{ partner.PartnerType.typeshortname }}</td>
+            <td>{{ partner.PartnerTier.tiername }}</td>
+            <td>
+                <button md-icon-button [routerLink]="['/partner-details', partner.id]" routerLinkActive="active"><md-icon fontSet="fontawesome" fontIcon="fa-info-circle"></md-icon></button>
+                <button md-icon-button (click)="openDialog(partner)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                <button md-icon-button (click)="deletePartner(partner.$key)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+            </td>
+        </tr>
+    </tbody>    
 </table>
 <button md-raised-button (click)="openDialog()">Add Partner</button>

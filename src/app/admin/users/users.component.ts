@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseListObservable } from 'angularfire2';
+import { PartnerPortalAPI } from '../../shared';
 
 
 @Component({
@@ -10,7 +10,8 @@ import { FirebaseListObservable } from 'angularfire2';
 
 
 export class UsersComponent implements OnInit {
-    @Input() users: FirebaseListObservable<any[]>;
+    @Input() users;
+    authProvider = localStorage.getItem('authProvider');
 
     constructor(){}
 

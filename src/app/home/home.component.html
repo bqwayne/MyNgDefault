@@ -4,6 +4,7 @@
 <div *ngIf="(loggedIn)">
   <p *ngIf="(greetingsName)">Hello {{ greetingsName }}!!!</p>
   <p *ngIf="!(greetingsName)">Hello!!!</p>
+  <p>My authorization provider is {{myAuthProvider}}</p>
 </div>
 <div *ngIf="!(loggedIn)">
   <p>Hello and Welcome!</p>

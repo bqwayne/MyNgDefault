@@ -7,13 +7,20 @@
 <div class="modal-dialog">
     <div class="loginmodal-container">
         <h1>Login to Your Account</h1><br>
-        <form class="form-signin" (submit)="loginWithEmail($event,email.value,password.value)">
-            <label for="email">Email: </label>
-            <input #email type="email" id="email" class="form-control" placeholder="Email Address">
+        <form class="form-signin" (submit)="loginWithEmail($event,email.value,password.value,provider.value)">
+            <md-input-container>
+                <input mdInput #email type="email" id="email" class="form-control" placeholder="Email Address">
+            </md-input-container>
             <br>
-            <label for="password">Password: </label>
-            <input #password type="password" id="password" class="form-control" placeholder="Password" required>
+            <md-input-container>
+                <input mdInput #password type="password" id="password" class="form-control" placeholder="Password" required>
+            </md-input-container>
             <br>
+            <label for="provider">Provider:</label>
+            <md-radio-group #provider class="example-radio-group">
+                <md-radio-button #provider class="example-radio-button" value='Firebase'>Firebase</md-radio-button>
+                <md-radio-button #provider class="example-radio-button" value='PartnerPortalAPI'>PartnerPortal API</md-radio-button>
+            </md-radio-group>
             <button md-button-raised type="submit">Sign-in</button>
         </form>
         <hr>

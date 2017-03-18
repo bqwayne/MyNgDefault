@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { FirebaseListObservable } from 'angularfire2';
-import { DialogComponent, DialogDisplayComponent, AuthFire } from '../shared';
+import { DialogComponent, DialogDisplayComponent, AuthFire, AuthService, PartnerPortalAPI } from '../shared';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +10,17 @@ import { DialogComponent, DialogDisplayComponent, AuthFire } from '../shared';
 })
 export class HomeComponent implements OnInit {
   loggedIn: boolean;
+  myAuthProvider: string;
   greetingsName: string;
+  users;
 
-  constructor(private dialog: MdDialog, private af: AuthFire) { }
+  constructor(private dialog: MdDialog, private af: AuthFire, private authService: AuthService, private parterApi: PartnerPortalAPI) { }
 
   ngOnInit() {
-    this.loggedIn = this.af.isLoggedIn;
-    //this.greetingsName = this.af.displayName;
+    if (this.af.isLoggedIn || this.authService.isLoggedIn) {
+      this.loggedIn = true;
+      this.myAuthProvider = (this.af.isLoggedIn) ? 'Firebase' : 'PartnerPortal API';
+    }
   }
 
   openDialog(){

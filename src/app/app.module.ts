@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import 'hammerjs';
@@ -46,7 +47,9 @@ import {  ITopbarActionsComponent,
 import { ConfigDefaultsService } from './admin/config';
 import { UsersComponent } from './admin/users'
 import { AppRoutesComponent } from './admin/settings/routes';
-import { DialogComponent, DialogDisplayComponent, ActionTypeDirective, AppMenuComponent, AuthFire, TruncatePipe } from './shared';
+import {  DialogComponent, DialogDisplayComponent, ActionTypeDirective, 
+          AppMenuComponent, AuthFire, AuthService, PartnerPortalAPI, 
+          IUsers, IUserDetails, TruncatePipe } from './shared';
 import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
 
 @NgModule({
@@ -114,8 +117,11 @@ import { DataIoComponent, DataIoService, DataIoFormComponent } from './data-io';
     MenuItemService, 
     DataIoService, 
     AuthFire, 
+    AuthService,
+    PartnerPortalAPI,
     PartnersService,
-    TruncatePipe
+    TruncatePipe,
+    AUTH_PROVIDERS
     ],
   bootstrap: [AppComponent]
 })

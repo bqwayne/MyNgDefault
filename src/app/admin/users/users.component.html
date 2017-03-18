@@ -1,6 +1,22 @@
 <md-card>
     <h1>Users</h1>
-    <md-list>
+    <md-list *ngIf="(authProvider === 'Firebase')">
         <md-list-item *ngFor="let user of users | async">{{user.$value}}</md-list-item>
     </md-list>
+    <table *ngIf="(authProvider === 'PartnerPortalAPI')">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.admin }}</td>
+            </tr>
+        </tbody>
+    </table>
 </md-card>
