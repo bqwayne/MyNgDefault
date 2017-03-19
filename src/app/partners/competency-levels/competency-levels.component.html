@@ -9,7 +9,7 @@
                 <th>Short Description</th>
                 <th>Actions</th>
             </thead>
-            <tbody *ngIf="(competencyLevelsList) && length > 0" class="data-tbody">
+            <tbody *ngIf="(competencyLevelsList) && length > 0 && authProvider === 'Firebase'" class="data-tbody">
                 <tr *ngFor="let competencyLevel of competencyLevelsList | async">
                     <td class="text-cell">{{ competencyLevel.competencyLevelName }}</td>
                     <td class="text-cell">{{ competencyLevel.description }}</td>
@@ -20,7 +20,17 @@
                     </td>
                 </tr>
             </tbody>
-            <tbody *ngIf="!(competencyLevelsList) || length == 0" class="data-tbody">
+             <tbody *ngIf="(competencyLevelsList) && length > 0 && authProvider === 'PartnerPortalAPI'" class="data-tbody">
+                <tr *ngFor="let competencyLevel of competencyLevelsList">
+                    <td class="text-cell">{{ competencyLevel.competencylevelname }}</td>
+                    <td class="text-cell">{{ competencyLevel.description }}</td>
+                    <td class="text-cell">{{ competencyLevel.shortdesc }}</td>
+                    <td>
+                        <button md-icon-button (click)="openDialog(competencyLevel)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                        <button md-icon-button (click)="deleteCompetencyLevel(competencyLevel.id)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                    </td>
+                </tr>
+            </tbody>           <tbody *ngIf="!(competencyLevelsList) || length == 0" class="data-tbody">
                 <tr><td colspan="3" class="text-cell">No competency levels found</td></tr>
             </tbody>
         </table>
@@ -38,13 +48,20 @@
                     <th>Short Desc</th>
                     <th>Description</th>
                 </thead>
-                <tbody>                   
+                <tbody *ngIf="authProvider === 'Firebase'">                   
                     <tr *ngFor="let competencyLevel of competencyLevelsList | async">
                         <td class="text-cell">{{competencyLevel.competencyLevelName}}</td>
                         <td class="text-cell">{{competencyLevel.shortDesc }}</td>
                         <td class="text-cell">{{competencyLevel.description }}</td>
                     </tr>
                 </tbody>
+                <tbody *ngIf="authProvider === 'PartnerPortalAPI'">                   
+                    <tr *ngFor="let competencyLevel of competencyLevelsList">
+                        <td class="text-cell">{{competencyLevel.competencylevelname}}</td>
+                        <td class="text-cell">{{competencyLevel.shortdesc }}</td>
+                        <td class="text-cell">{{competencyLevel.description }}</td>
+                    </tr>
+                </tbody>                
             </table>
         </md-card-content>
         <md-card-actions>

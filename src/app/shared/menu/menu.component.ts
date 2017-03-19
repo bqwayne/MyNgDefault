@@ -1,4 +1,5 @@
 import { Component, OnInit, Injectable, Input, ElementRef, Renderer } from '@angular/core';
+import { Router } from '@angular/router';
 import { MdMenuModule, MdMenu, MdMenuTrigger } from '@angular/material';
 import { MenuItemService, IMenus, ITopbarActionsComponent } from '../../admin/settings/navigation';
 
@@ -14,6 +15,7 @@ export class AppMenuComponent implements OnInit {
     selectedMenuItem: IMenus;
 
     constructor(private _menuitemservice: MenuItemService,
+                private router: Router,
                 private el: ElementRef){}
 
     ngOnInit(){
@@ -23,10 +25,16 @@ export class AppMenuComponent implements OnInit {
             this.menuItems.forEach(menuItem =>{
                 if (menuItem.menuName === this.menuName) {
                     this.selectedMenuItem = menuItem;
-                    console.log("The selectedMenuItem.menuType is: " + this.selectedMenuItem.menuType);
+                    console.log(this.selectedMenuItem);
                 }
             });
         });
-       
+    }
+
+    menuClick(action) {
+        this.router.navigateByUrl(action);
+    }
+    alert(message) {
+        window.alert(message);
     }
 }

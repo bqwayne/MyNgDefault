@@ -4,7 +4,12 @@
 <md-menu #menu="mdMenu" [overlapTrigger]="false">
   <div *ngIf="(selectedMenuItem)">
     <div *ngIf="selectedMenuItem.menuType === 'drop-down'">
-      <button md-menu-item>
+      <button md-menu-item *ngFor="let menuListItem of selectedMenuItem.menuListItems" (click)="menuClick(menuListItem.route)">
+        <md-icon fontSet="fontawesome" [fontIcon]=menuListItem.icon></md-icon>
+        <span>{{menuListItem.menuItemName}}</span>
+      </button>
+<!--
+        <button md-menu-item>
         <md-icon>dialpad</md-icon>
         <span>Redial</span>
       </button>
@@ -16,6 +21,7 @@
         <md-icon>notifications_off</md-icon>
         <span>Disable alerts</span>
       </button>
+-->      
     </div>
     <div *ngIf="selectedMenuItem.menuType === 'list'">
       <button md-menu-item>

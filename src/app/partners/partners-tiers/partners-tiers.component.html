@@ -9,7 +9,7 @@
                 <th>Short Description</th>
                 <th>Actions</th>
             </thead>
-            <tbody *ngIf="(partnersTiersList) && length > 0" class="data-tbody">
+            <tbody *ngIf="(partnersTiersList) && length > 0  && authProvider === 'Firebase'" class="data-tbody">
                 <tr *ngFor="let partnersTier of partnersTiersList | async">
                     <td class="text-cell">{{ partnersTier.tierName }}</td>
                     <td class="text-cell">{{ partnersTier.description }}</td>
@@ -20,6 +20,17 @@
                     </td>
                 </tr>
             </tbody>
+            <tbody *ngIf="(partnersTiersList) && length > 0 && authProvider === 'PartnerPortalAPI'" class="data-tbody">
+                <tr *ngFor="let partnersTier of partnersTiersList">
+                    <td class="text-cell">{{ partnersTier.tiername }}</td>
+                    <td class="text-cell">{{ partnersTier.description }}</td>
+                    <td class="text-cell">{{ partnersTier.shortdesc }}</td>
+                    <td>
+                        <button md-icon-button (click)="openDialog(partnersTier)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                        <button md-icon-button (click)="deletePartnersTier(partnersTier.id)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                    </td>
+                </tr>
+            </tbody>            
             <tbody *ngIf="!(partnersTiersList) || length == 0" class="data-tbody">
                 <tr><td colspan="3" class="text-cell">No partners tiers found</td></tr>
             </tbody>
@@ -38,13 +49,20 @@
                     <th>Short Desc</th>
                     <th>Description</th>
                 </thead>
-                <tbody>
+                <tbody *ngIf="authProvider === 'Firebase'">
                     <tr *ngFor="let partnersTier of partnersTiersList | async">
                         <td class="text-cell">{{partnersTier.tierName}}</td>
                         <td class="text-cell">{{partnersTier.shortDesc }}</td>
                         <td class="text-cell">{{partnersTier.description }}</td>
                     </tr>
                 </tbody>
+                <tbody *ngIf="authProvider === 'PartnerPortalAPI'">
+                    <tr *ngFor="let partnersTier of partnersTiersList">
+                        <td class="text-cell">{{partnersTier.tiername}}</td>
+                        <td class="text-cell">{{partnersTier.shortdesc }}</td>
+                        <td class="text-cell">{{partnersTier.description }}</td>
+                    </tr>
+                </tbody>                
             </table>
         </md-card-content>
         <md-card-actions>

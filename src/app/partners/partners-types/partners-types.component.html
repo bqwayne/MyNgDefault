@@ -9,7 +9,7 @@
                 <th>Description</th>
                 <th>Actions</th>
             </thead>
-            <tbody *ngIf="(partnersTypesList) && length > 0" class="data-tbody">
+            <tbody *ngIf="(partnersTypesList) && length > 0 && authProvider === 'Firebase'" class="data-tbody">
                 <tr *ngFor="let partnersType of partnersTypesList | async">
                     <td class="text-cell">{{ partnersType.typeShortName }}</td>
                     <td class="text-cell">{{ partnersType.typeLongName }}</td>
@@ -20,6 +20,17 @@
                     </td>
                 </tr>
             </tbody>
+            <tbody *ngIf="(partnersTypesList) && length > 0 && authProvider === 'PartnerPortalAPI'" class="data-tbody">
+                <tr *ngFor="let partnersType of partnersTypesList">
+                    <td class="text-cell">{{ partnersType.typeshortname }}</td>
+                    <td class="text-cell">{{ partnersType.typelongname }}</td>
+                    <td class="text-cell">{{ partnersType.description }}</td>
+                    <td>
+                        <button md-icon-button (click)="openDialog(partnersType)"><md-icon fontSet="fontawesome" fontIcon="fa-pencil"></md-icon></button>
+                        <button md-icon-button (click)="deletePartnersType(partnersType.id)"><md-icon fontSet="fontawesome" fontIcon="fa-eraser"></md-icon></button>
+                    </td>
+                </tr>
+            </tbody>            
             <tbody *ngIf="!(partnersTypesList) || length == 0" class="data-tbody">
                 <tr><td colspan="4" class="text-cell">No partners types found</td></tr>
             </tbody>
@@ -38,17 +49,24 @@
                     <th>Long Name</th>
                     <th>Description</th>
                 </thead>
-                <tbody>
+                <tbody *ngIf="authProvider === 'Firebase'">
                     <tr *ngFor="let partnersType of partnersTypesList | async">
                         <td class="text-cell">{{ partnersType.typeShortName }}</td>
                         <td class="text-cell">{{ partnersType.typeLongName }}</td>
                         <td class="text-cell">{{ partnersType.description }}</td>
                     </tr>
                 </tbody>
+                <tbody *ngIf="authProvider === 'PartnerPortalAPI'">
+                    <tr *ngFor="let partnersType of partnersTypesList">
+                        <td class="text-cell">{{ partnersType.typeshortname }}</td>
+                        <td class="text-cell">{{ partnersType.typelongname }}</td>
+                        <td class="text-cell">{{ partnersType.description }}</td>
+                    </tr>
+                </tbody>                
             </table>
         </md-card-content>        
         <md-card-actions>
-            <button md-raised-button color="primary" (click)="this.router.navigate['/partner-types']">Go To Partner Types</button>
+            <button md-raised-button color="primary" (click)="this.router.navigate(['/partner-types'])">Go To Partner Types</button>
         </md-card-actions>
     </md-card>
 </div>

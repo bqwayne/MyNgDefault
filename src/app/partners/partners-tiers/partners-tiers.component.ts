@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { PartnersService, PartnersTierFormComponent } from '../';
-import { TruncatePipe } from '../../shared';
+import { TruncatePipe, PartnerPortalAPI } from '../../shared';
 
 @Component({
     selector: 'app-partners-tiers',
@@ -14,11 +14,13 @@ import { TruncatePipe } from '../../shared';
 
 export class PartnersTiersComponent implements OnInit {
     @Input('viewType') viewType?: string;
-    partnersTiersList: FirebaseListObservable<any[]>;
+    partnersTiersList;
     length;
+    authProvider = localStorage.getItem('authProvider');
 
 
     constructor(private partnersservice: PartnersService, 
+                private partnerportalapi: PartnerPortalAPI,
                 public dialog: MdDialog,
                 private mdIconRegistry: MdIconRegistry,
                 private router: Router){
@@ -27,8 +29,16 @@ export class PartnersTiersComponent implements OnInit {
 
 
     ngOnInit() {
-        this.partnersTiersList = this.partnersservice.getPartnersTiers();
-        this.partnersTiersList.subscribe(response => this.length = response.length);
+        if(this.authProvider === 'Firebase'){        
+            this.partnersTiersList = <FirebaseListObservable<any[]>> this.partnersservice.getPartnersTiers();
+            this.partnersTiersList.subscribe(response => this.length = response.length);
+        }
+        if (this.authProvider === 'PartnerPortalAPI') {
+            this.partnerportalapi.getPartnerTiers(localStorage.getItem('token')).subscribe(res => {
+                this.partnersTiersList = res.partnerTiers;
+                this.length = this.partnersTiersList.length;
+            });
+        }        
         if (!this.viewType) {
             this.viewType = 'full';
         }

@@ -1,5 +1,15 @@
 [
     {"menuName": "alert", "menuType": "list", "menuListSource": "AlertListComponent"},
     {"menuName": "help", "menuType": "drop-down",
-    "menuListItems": [{"menuItemName": "About", "route": "AboutComponent"}]}
+    "menuListItems": [{"menuItemName": "About", "route": "AboutComponent", "icon": "fa-info-circle"}]},
+    {"menuName": "menu", "menuType": "drop-down",
+    "menuListItems": [
+        {"menuItemName": "About", "route": "AboutComponent", "icon": "fa-user"},
+        {"menuItemName": "About", "route": "AboutComponent", "icon": "fa-user"}
+    ]},
+    {"menuName": "profile", "menuType": "drop-down",
+    "menuListItems": [
+        {"menuItemName": "Login/Logout", "route": "/login", "icon": "fa-user"},
+        {"menuItemName": "Admin", "route": "/admin", "icon": "fa-user"}
+    ]}    
 ]

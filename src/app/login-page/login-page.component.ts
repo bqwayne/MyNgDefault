@@ -12,10 +12,23 @@ styleUrls: ['./login-page.component.scss']
 
 export class LoginPageComponent implements OnInit {
     public errors: any;
+    isLoggedIn: boolean = false;
+    authProvider = localStorage.getItem('authProvider');
 
     constructor(public authFire: AuthFire, private router: Router, private authService: AuthService){}
 
-    ngOnInit() {}
+    ngOnInit() {
+        switch(this.authProvider) {
+            case 'Firebase':
+                this.isLoggedIn = this.authFire.isLoggedIn;
+                break;
+            case 'PartnerPortalAPI':
+                this.isLoggedIn = this.authService.loggedIn();
+                break;
+            default:
+                this.isLoggedIn = false;
+        }
+    }
 
     loginWithGoogle() {
         this.authFire.loginWithGoogle().then(data => this.router.navigate(['']));
@@ -36,5 +49,12 @@ export class LoginPageComponent implements OnInit {
             this.authService.login(email, password);
             localStorage.setItem('authProvider', 'PartnerPortalAPI');
         }
+    }
+    logout() {
+        this.authFire.logout();
+        this.authService.logout();
+    }
+    cancel() {
+        this.router.navigateByUrl("/");
     }
 }

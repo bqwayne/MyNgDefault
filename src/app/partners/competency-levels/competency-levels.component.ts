@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2';
 import { MdDialog, MdIconRegistry } from '@angular/material';
 import { PartnersService, CompetencyLevelFormComponent } from '../';
+import { PartnerPortalAPI } from '../../shared';
 
 @Component({
     selector: 'app-competency-levels',
@@ -13,10 +14,12 @@ import { PartnersService, CompetencyLevelFormComponent } from '../';
 
 export class CompetencyLevelsComponent implements OnInit {
     @Input('viewType') viewType?: string;
-    competencyLevelsList: FirebaseListObservable<any[]>;
+    competencyLevelsList;
     length;    
+    authProvider = localStorage.getItem('authProvider');
 
     constructor(private partnersservice: PartnersService, 
+                private partnerportalapi: PartnerPortalAPI,
                 public dialog: MdDialog,
                 private mdIconRegistry: MdIconRegistry,
                 private router: Router){
@@ -25,8 +28,16 @@ export class CompetencyLevelsComponent implements OnInit {
 
 
     ngOnInit() {
-        this.competencyLevelsList = this.partnersservice.getCompetencyLevels();
-        this.competencyLevelsList.subscribe(response => this.length = response.length);
+        if(this.authProvider === 'Firebase'){
+            this.competencyLevelsList = <FirebaseListObservable<any[]>> this.partnersservice.getCompetencyLevels();
+            this.competencyLevelsList.subscribe(response => this.length = response.length);
+        }
+        if (this.authProvider === 'PartnerPortalAPI') {
+            this.partnerportalapi.getCompetencyLevels(localStorage.getItem('token')).subscribe(res => {
+                this.competencyLevelsList = res.competencyLevels;
+                this.length = this.competencyLevelsList.length;
+            });
+        }        
         if (!this.viewType) {
             this.viewType = 'full';
         }

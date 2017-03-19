@@ -5,7 +5,7 @@
 </div>
 
 <div class="modal-dialog">
-    <div class="loginmodal-container">
+    <div *ngIf="(!isLoggedIn)" class="loginmodal-container">
         <h1>Login to Your Account</h1><br>
         <form class="form-signin" (submit)="loginWithEmail($event,email.value,password.value,provider.value)">
             <md-input-container>
@@ -27,5 +27,11 @@
         <button class="login loginmodal-submit" (click)="loginWithGoogle()">Login with Google</button>
         <hr>
         <a [routerLink]="['/register']">Register Now!</a><br><a [routerLink]="['']">Cancel</a>
+    </div>
+    <div *ngIf="(isLoggedIn)" class="loginmodal-container">
+        <h1>You are currently logged in.</h1>
+        <button md-button-raised (click)="logout()">Log out now.</button>
+        <button md-button-raised (click)="cancel()">Cancel</button>
+
     </div>
 </div>
